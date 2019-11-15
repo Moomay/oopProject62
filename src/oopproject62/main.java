@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oopproject62;
 
 /**
  *
- * @author Jame
+ * @author prize
  */
-public class main {
-    public static void main(String[] arg){
-        System.out.println("jaem");
+public class Main {
+    
+    public static void main(String[] args) {
+        new GameUI().init();
     }
 }
