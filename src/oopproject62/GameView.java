@@ -32,7 +32,7 @@ public class GameView extends JPanel {
 
     public void init() {
         // step 1
-        f1 = new JFrame("Word Of The Death");
+        f1 = new JFrame("ทดสอบ");
         
         mb1 = new JMenuBar();
         
@@ -55,6 +55,7 @@ public class GameView extends JPanel {
         c1.setPreferredSize(new Dimension(width, height));
         c1.setMaximumSize(new Dimension(width, height));
         c1.setMinimumSize(new Dimension(width, height));
+        c1.setFocusable(false);
 
         // step 3
         f1.setJMenuBar(mb1);

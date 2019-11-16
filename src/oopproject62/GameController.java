@@ -18,48 +18,68 @@ import javax.swing.ImageIcon;
  *
  * @author Jame
  */
-public class GameController implements Runnable, ActionListener {
+public class GameController implements Runnable {
 
     private BufferedImage testImage;
     private GameView view;
     private ImageIcon i;
     private Image img;
-    
+    private SpriteSheet sheet;
     private Thread thread0;
     private boolean running = false;
-    
+    private MenuState menuState;
+    private GameState gameState;
     private BufferStrategy bs;
     private Graphics g;
-    
+    private KeyManager k1;
+   
+
     public GameController() {
 
     }
 
     private void init() {
         view = new GameView(700, 500);
+        k1 = new KeyManager();
+        
+        
         view.init();
-        testImage = ImageLoader.loadImage("test.jpg");
+        Assets.init();
+        
+        view.getF1().addKeyListener(k1);
+
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        State.setState(gameState);
+        
+        
     }
 
     private void tick() {
+        k1.tick();
+        if (State.getCurrentState() != null)
+            State.getCurrentState().tick();
     }
 
     private void render() {
         bs = view.getC1().getBufferStrategy();
-        if (bs == null){
+        if (bs == null) {
             view.getC1().createBufferStrategy(3);
             return;
         }
         g = bs.getDrawGraphics();
         //Claer Screen
-        g.clearRect(0,0, 700, 500);
+        g.clearRect(0, 0, 700, 500);
         //Draw
         g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
         ImageIcon i = new ImageIcon("test.jpg");
         img = i.getImage();
-        g.drawImage(img, 200,300, null);
-        g.drawImage(testImage, 1, 1, null);
+        g.drawImage(img, 200, 300, null);
+        
+        //168 x 24 : 7
+         if (State.getCurrentState() != null)
+            State.getCurrentState().render(g);
         //end Drawing
         bs.show();
         g.dispose();
@@ -67,13 +87,39 @@ public class GameController implements Runnable, ActionListener {
 
     public void run() {
         init();
+
+        int fps = 60;
+        double timePerTick = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
+
         while (running) {
-            tick();
-            render();
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+            if (delta >= 1) {
+                tick();
+                render();
+                ticks++;
+                delta--;
+            }
+            
+            if (timer >= 1000000000){
+                System.out.println("Trick and frame: "+ticks);
+                ticks = 0;
+                timer = 0;
+            }
+
         }
         stop();
     }
-
+    public KeyManager getKeyManager(){
+        return k1;
+    }
     public synchronized void start() {
         running = true;
         thread0 = new Thread(this);
@@ -95,6 +141,7 @@ public class GameController implements Runnable, ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
+
     public static void main(String[] args) {
         // TODO code application logic here
         GameController game = new GameController();
