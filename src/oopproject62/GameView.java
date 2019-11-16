@@ -12,12 +12,19 @@ import javax.swing.*;
  *
  * @author prize
  */
-public class GameUI extends JPanel {
-
+public class GameView extends JPanel {
+    
+    private int width, height; 
     private JFrame f1;
     private JMenuBar mb1;
     private JMenu m1, m2;
     private JMenuItem mi1,mi2,mi3,mi4,mi5;
+    public GameView() {}
+    
+    public GameView(int width,int height){
+        this.width = width;
+        this.height = height;
+    }
     
     public void init(){
         // step 1
@@ -35,7 +42,7 @@ public class GameUI extends JPanel {
         mi5 = new JMenuItem("Message");
         
         // step 2
-        f1.setSize(800, 600);
+        f1.setSize(width, height);
         f1.setVisible(true);
         f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f1.setBackground(Color.black);

@@ -11,6 +11,7 @@
 public class Main {
     
     public static void main(String[] args) {
-        new GameUI().init();
+        GameView view = new GameView(1920, 800);
+        view.init();
     }
 }
