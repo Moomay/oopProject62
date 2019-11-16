@@ -59,6 +59,7 @@ public class GameController implements Runnable, ActionListener {
         ImageIcon i = new ImageIcon("test.jpg");
         img = i.getImage();
         g.drawImage(img, 200,300, null);
+        g.drawImage(testImage, 1, 1, null);
         //end Drawing
         bs.show();
         g.dispose();
