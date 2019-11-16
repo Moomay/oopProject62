@@ -16,7 +16,7 @@ public class Player extends Creature {
     private GameController game;
 
     public Player(GameController game, float x, float y) {
-        super(x, y, 24,24);
+        super(x, y, 64,64);
         this.game = game;
     }
 
@@ -37,7 +37,7 @@ public class Player extends Creature {
             xMove = speed;
     }
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y, 100, 100, null);
+        g.drawImage(Assets.player, (int) x, (int) y,64, 64, null);
     }
 
 }

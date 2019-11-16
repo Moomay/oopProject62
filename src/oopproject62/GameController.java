@@ -71,11 +71,11 @@ public class GameController implements Runnable {
         //Claer Screen
         g.clearRect(0, 0, 700, 500);
         //Draw
-        g.setColor(Color.red);
+        /*g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
         ImageIcon i = new ImageIcon("test.jpg");
         img = i.getImage();
-        g.drawImage(img, 200, 300, null);
+        g.drawImage(img, 200, 300, null);*/
         
         //168 x 24 : 7
          if (State.getCurrentState() != null)
