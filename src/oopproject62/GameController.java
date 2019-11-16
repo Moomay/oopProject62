@@ -5,11 +5,14 @@
  */
 package oopproject62;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +22,8 @@ public class GameController implements Runnable, ActionListener {
 
     private BufferedImage testImage;
     private GameView view;
+    private ImageIcon i;
+    private Image img;
     
     private Thread thread0;
     private boolean running = false;
@@ -33,6 +38,7 @@ public class GameController implements Runnable, ActionListener {
     private void init() {
         view = new GameView(700, 500);
         view.init();
+        testImage = ImageLoader.loadImage("test.jpg");
     }
 
     private void tick() {
@@ -48,9 +54,11 @@ public class GameController implements Runnable, ActionListener {
         //Claer Screen
         g.clearRect(0,0, 700, 500);
         //Draw
-        
+        g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
-        
+        ImageIcon i = new ImageIcon("test.jpg");
+        img = i.getImage();
+        g.drawImage(img, 200,300, null);
         //end Drawing
         bs.show();
         g.dispose();
