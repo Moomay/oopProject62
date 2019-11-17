@@ -22,7 +22,7 @@ public class Handler {
         this.game = game;
         this.world = world;
     }
-
+    
     public GameCamera getGameCamera() {
         return game.getGameCamera();
     }
@@ -30,7 +30,12 @@ public class Handler {
     public KeyManager getKeyManager() {
         return game.getKeyManager();
     }
-
+    public MouseManager getMouseManager(){
+        return game.getMouseManager();
+    }
+    public GameView getView(){
+        return game.getView();
+    }
     public int getWidth() {
         return game.getWidth();
     }

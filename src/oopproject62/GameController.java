@@ -19,10 +19,11 @@ import javax.swing.ImageIcon;
  * @author Jame
  */
 public class GameController implements Runnable {
+
     //set up screen
     private int width = 1280;
     private int height = 640;
-    
+   
     private BufferedImage testImage;
     private GameView view;
     private ImageIcon i;
@@ -30,28 +31,38 @@ public class GameController implements Runnable {
     private SpriteSheet sheet;
     private Thread thread0;
     private boolean running = false;
-    private MenuState menuState;
-    private GameState gameState;
+    //stage
+    public MenuState menuState;
+    public GameState gameState;
+    
     private BufferStrategy bs;
     private Graphics g;
     //input
     private KeyManager k1;
+    private MouseManager m1;
     //camera
     private GameCamera gameCamera;
     //handler
     private Handler handler;
+
     public GameController() {
 
     }
 
-    private void init() {
+    void init() {
         view = new GameView(width, height);
-        k1 = new KeyManager();        
-                  
+        k1 = new KeyManager();
+        m1 = new MouseManager();
+
         view.init();
         Assets.init();
 
         view.getF1().addKeyListener(k1);
+        view.getF1().addMouseListener(m1);
+        view.getF1().addMouseMotionListener(m1);
+        
+        view.getC1().addMouseMotionListener(m1);
+        view.getC1().addMouseListener(m1);
         
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
@@ -129,8 +140,12 @@ public class GameController implements Runnable {
     public KeyManager getKeyManager() {
         return k1;
     }
-    
-    public GameCamera getGameCamera(){
+
+    public MouseManager getMouseManager() {
+        return m1;
+    }
+
+    public GameCamera getGameCamera() {
         return gameCamera;
     }
 
@@ -149,7 +164,9 @@ public class GameController implements Runnable {
     public void setHeight(int height) {
         this.height = height;
     }
-    
+    public GameView getView(){
+        return view;
+    }
     public synchronized void start() {
         running = true;
         thread0 = new Thread(this);
@@ -167,7 +184,7 @@ public class GameController implements Runnable {
             System.out.println(e);
         }
     }
-
+    
     public void actionPerformed(ActionEvent e) {
 
     }
