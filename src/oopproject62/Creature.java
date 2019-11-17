@@ -11,14 +11,14 @@ package oopproject62;
  */
 public abstract class Creature extends Entity {
 
-    protected int health;
+    
     protected float speed;
     protected float xMove, yMove;
     public static final float DEFAULT_SPEED = 3.0f;
 
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        health = 10;
+        
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;

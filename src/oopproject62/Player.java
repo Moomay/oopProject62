@@ -7,6 +7,7 @@ package oopproject62;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
@@ -35,6 +36,45 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+        //atk
+        checkAttacks();
+    }
+
+    public void checkAttacks() {
+        Rectangle cb = getCollisionBounds(0, 0);
+        Rectangle ar = new Rectangle();
+        int arSize = 20;
+        ar.width = arSize;
+        ar.height = arSize;
+        if (handler.getKeyManager().aUp) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y - arSize;
+        } else if (handler.getKeyManager().aDown) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y + cb.height;
+        } else if (handler.getKeyManager().aLeft) {
+            ar.x = cb.x - arSize;
+            ar.y = cb.y - cb.height/2 - arSize/2;
+        } else if (handler.getKeyManager().aRight) {
+            ar.x = cb.x + cb.width;
+            ar.y = cb.y + cb.height/2 -arSize/2;
+        } else{
+            return;
+        }
+        for (Entity e : handler.getWorld().getEntityManager().getEntities()){
+            if(e.equals(this)){
+                continue;
+            }
+            if (e.getCollisionBounds(0,0).intersects(ar)){
+                e.hurt(1);
+                return;
+            }
+        }
+
+    }
+
+    public void die() {
+        System.out.println("U lose");
     }
 
     private void getInput() {
@@ -52,6 +92,7 @@ public class Player extends Creature {
         if (handler.getKeyManager().right) {
             xMove = speed;
         }
+
     }
 
     public void render(Graphics g) {

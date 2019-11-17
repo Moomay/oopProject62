@@ -48,8 +48,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     public void mousePressed(MouseEvent me) {
         if (me.getButton() == MouseEvent.BUTTON1) {
+            System.out.println("L Click");
             leftPressed = true;
         } else if (me.getButton() == MouseEvent.BUTTON3) {
+            System.out.println("R Click");
             rightPressed = true;
         }
     }
@@ -78,7 +80,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mouseMoved(MouseEvent me) {
         mouseX = me.getX();
         mouseY = me.getY();
-
+        System.out.println(mouseX+ "//" +mouseY);
         if (uiManager != null) {
             uiManager.onMouseMove(me);
         }

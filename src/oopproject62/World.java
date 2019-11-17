@@ -18,15 +18,19 @@ public class World {
     private int spawnX, spawnY;
     private int[][] tiles;
     private EntityManager entityManager;
+
     public World(Handler handler, String path) {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler,100,100));
-        entityManager.addEntity(new Tree(handler, 200,250));
-        
+        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+        entityManager.addEntity(new Tree(handler, 200, 250));
+        entityManager.addEntity(new Tree(handler, 150, 500));
+        entityManager.addEntity(new Rock(handler, 100, 450));
+        entityManager.addEntity(new Rock(handler, 300, 230));
         loadWorld(path);
-        
+
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+
     }
 
     public void tick() {
@@ -49,6 +53,7 @@ public class World {
         }
         //entity
         entityManager.render(g);
+
     }
 
     public Tile getTile(int x, int y) {
@@ -89,6 +94,10 @@ public class World {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public Handler getHandler() {
+        return handler;
     }
 
 }

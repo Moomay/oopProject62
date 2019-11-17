@@ -185,10 +185,6 @@ public class GameController implements Runnable {
         }
     }
     
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
     public static void main(String[] args) {
         // TODO code application logic here
         GameController game = new GameController();

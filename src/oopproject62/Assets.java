@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 24,height = 24;
-    public static BufferedImage player, dirt, grass, water,tree;
+    public static BufferedImage player, dirt, grass, water,tree,rock;
     public static BufferedImage[] player_right;
     public static BufferedImage[] btn_start;
 
@@ -36,6 +36,6 @@ public class Assets {
         dirt = ImageLoader.loadImage("dirt.png");
         grass = ImageLoader.loadImage("grass.png");
         water = ImageLoader.loadImage("water.png");
-        
+        rock = ImageLoader.loadImage("rock.png");
     }
 }
