@@ -16,8 +16,8 @@ public abstract class Creature extends Entity {
     protected float xMove, yMove;
     public static final float DEFAULT_SPEED = 3.0f;
 
-    public Creature(float x, float y, int width, int height) {
-        super(x, y, width, height);
+    public Creature(GameController game,float x, float y, int width, int height) {
+        super(game, x, y, width, height);
         health = 10;
         speed = DEFAULT_SPEED;
         xMove = 0;

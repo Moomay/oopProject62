@@ -19,7 +19,10 @@ import javax.swing.ImageIcon;
  * @author Jame
  */
 public class GameController implements Runnable {
-
+    //set up screen
+    private int width = 1280;
+    private int height = 640;
+    
     private BufferedImage testImage;
     private GameView view;
     private ImageIcon i;
@@ -31,34 +34,36 @@ public class GameController implements Runnable {
     private GameState gameState;
     private BufferStrategy bs;
     private Graphics g;
+    //input
     private KeyManager k1;
-   
+    //camera
+    private GameCamera gameCamera;
 
     public GameController() {
 
     }
 
     private void init() {
-        view = new GameView(700, 500);
+        view = new GameView(width, height);
         k1 = new KeyManager();
-        
-        
+        gameCamera = new GameCamera(this, 0, 0);
+
         view.init();
         Assets.init();
-        
+
         view.getF1().addKeyListener(k1);
 
         gameState = new GameState(this);
         menuState = new MenuState(this);
         State.setState(gameState);
-        
-        
+
     }
 
     private void tick() {
         k1.tick();
-        if (State.getCurrentState() != null)
+        if (State.getCurrentState() != null) {
             State.getCurrentState().tick();
+        }
     }
 
     private void render() {
@@ -69,17 +74,18 @@ public class GameController implements Runnable {
         }
         g = bs.getDrawGraphics();
         //Claer Screen
-        g.clearRect(0, 0, 700, 500);
+        g.clearRect(0, 0, width, height);
         //Draw
         /*g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
         ImageIcon i = new ImageIcon("test.jpg");
         img = i.getImage();
         g.drawImage(img, 200, 300, null);*/
-        
+
         //168 x 24 : 7
-         if (State.getCurrentState() != null)
+        if (State.getCurrentState() != null) {
             State.getCurrentState().render(g);
+        }
         //end Drawing
         bs.show();
         g.dispose();
@@ -107,9 +113,9 @@ public class GameController implements Runnable {
                 ticks++;
                 delta--;
             }
-            
-            if (timer >= 1000000000){
-                System.out.println("Trick and frame: "+ticks);
+
+            if (timer >= 1000000000) {
+                System.out.println("Trick and frame: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
@@ -117,9 +123,31 @@ public class GameController implements Runnable {
         }
         stop();
     }
-    public KeyManager getKeyManager(){
+
+    public KeyManager getKeyManager() {
         return k1;
     }
+    
+    public GameCamera getGameCamera(){
+        return gameCamera;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    
     public synchronized void start() {
         running = true;
         thread0 = new Thread(this);

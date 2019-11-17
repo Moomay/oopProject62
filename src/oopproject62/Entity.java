@@ -12,10 +12,13 @@ import java.awt.Graphics;
  * @author Jame
  */
 public abstract class Entity {
-    
-    protected float x,y;
+
+    protected GameController game;
+    protected float x, y;
     protected float width, height;
-    public Entity(float x, float y, int width, int height){
+
+    public Entity(GameController game, float x, float y, int width, int height) {
+        this.game = game;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -53,8 +56,9 @@ public abstract class Entity {
     public void setHeight(float height) {
         this.height = height;
     }
-    
+
     public abstract void tick();
+
     public abstract void render(Graphics g);
-    
+
 }

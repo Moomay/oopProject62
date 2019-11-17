@@ -13,31 +13,37 @@ import java.awt.Graphics;
  */
 public class Player extends Creature {
 
-    private GameController game;
-
     public Player(GameController game, float x, float y) {
-        super(x, y, 64,64);
-        this.game = game;
+        super(game, x, y, 64, 64);
+
     }
 
     public void tick() {
         getInput();
         move();
+        game.getGameCamera().centerOnEntity(this);
     }
-    private void getInput(){
+
+    private void getInput() {
         xMove = 0;
         yMove = 0;
-        if(game.getKeyManager().up)
+        if (game.getKeyManager().up) {
             yMove = -speed;
-        if(game.getKeyManager().down)
+        }
+        if (game.getKeyManager().down) {
             yMove = speed;
-        if(game.getKeyManager().left)
+        }
+        if (game.getKeyManager().left) {
             xMove = -speed;
-        if(game.getKeyManager().right)
+        }
+        if (game.getKeyManager().right) {
             xMove = speed;
+        }
     }
+
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y,64, 64, null);
+        g.drawImage(Assets.player, (int) (x - game.getGameCamera().getxOffset()), 
+                (int) (y - game.getGameCamera().getyOffset()), 64, 64, null);
     }
 
 }

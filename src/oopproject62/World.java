@@ -12,13 +12,15 @@ import java.awt.Graphics;
  * @author Jame
  */
 public class World {
-
+    
+    private GameController game;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(String path) {
+    public World(GameController game,String path) {
         loadWorld(path);
+        this.game = game;
     }
 
     public void tick() {
@@ -28,7 +30,9 @@ public class World {
     public void render(Graphics g) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                getTile(x, y).render(g, x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT);
+                getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - game.getGameCamera().getxOffset()),
+                        (int) (y * Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
+                
             }
         }
     }
