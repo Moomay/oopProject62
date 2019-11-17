@@ -17,14 +17,20 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
-
+    private EntityManager entityManager;
     public World(Handler handler, String path) {
         this.handler = handler;
+        entityManager = new EntityManager(handler, new Player(handler,100,100));
+        entityManager.addEntity(new Tree(handler, 200,250));
+        
         loadWorld(path);
-
+        
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
     }
 
     public void tick() {
+        entityManager.tick();
 
     }
 
@@ -41,6 +47,8 @@ public class World {
 
             }
         }
+        //entity
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y) {
@@ -77,6 +85,10 @@ public class World {
 
     public int getHeight() {
         return height;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

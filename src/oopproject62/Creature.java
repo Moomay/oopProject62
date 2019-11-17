@@ -25,9 +25,12 @@ public abstract class Creature extends Entity {
     }
 
     public void move() {
-
-        moveX();
-        moveY();
+        if (!checkEntityCollisions(xMove, 0f)) {
+            moveX();
+        }
+        if (!checkEntityCollisions(0f, yMove)) {
+            moveY();
+        }
     }
 
     public void moveX() {
@@ -36,16 +39,15 @@ public abstract class Creature extends Entity {
             if ((!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT))
                     && (!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))) {
                 x += xMove;
-            }else {
-                x = tx * Tile.TILEWIDTH - bounds.x - bounds.width -1;
+            } else {
+                x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
             }
         } else if (xMove < 0) {
             int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
             if ((!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT))
                     && (!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))) {
                 x += xMove;
-            }
-            else {
+            } else {
                 x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
             }
         }
@@ -57,7 +59,7 @@ public abstract class Creature extends Entity {
             if ((!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty))
                     && (!collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty))) {
                 y += yMove;
-            }else {
+            } else {
                 y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
             }
 
@@ -66,8 +68,8 @@ public abstract class Creature extends Entity {
             if ((!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty))
                     && (!collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty))) {
                 y += yMove;
-            }else{
-                y = ty*Tile.TILEHEIGHT - bounds.y - bounds.height -1;
+            } else {
+                y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
             }
 
         }

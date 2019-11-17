@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 24,height = 24;
-    public static BufferedImage player, dirt, grass, water;
+    public static BufferedImage player, dirt, grass, water,tree;
     public static BufferedImage[] player_right;
 
     public static void init() {
@@ -28,6 +28,7 @@ public class Assets {
         player_right[4] = sheet.crop(width*5, 0, width,height);
         player_right[5] = sheet.crop(width*6, 0, width,height);
         player = sheet.crop(0, 0, 24, 24);
+        tree = ImageLoader.loadImage("tree.png");
         dirt = ImageLoader.loadImage("dirt.png");
         grass = ImageLoader.loadImage("grass.png");
         water = ImageLoader.loadImage("water.png");
