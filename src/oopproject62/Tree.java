@@ -18,7 +18,7 @@ public class Tree extends StaticEntity {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 
         bounds.x = 20;
-        bounds.y = 40;
+        bounds.y = 60;
         bounds.width = 24;
         bounds.height = 12;
     }

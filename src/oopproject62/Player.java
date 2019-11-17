@@ -17,16 +17,25 @@ import java.awt.image.BufferedImage;
 public class Player extends Creature {
 
     private Animation animRight;
-
+    private Animation animRight0;
+    private Animation animLeft;
+    private Animation animDown;
+    private Animation animTop;
+    
+    private int stage = 0;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, 64, 64);
 
-        bounds.x = 16;
-        bounds.y = 32;
+        bounds.x = 50;
+        bounds.y = 70;
         bounds.width = 32;
         bounds.height = 32;
         //Animation
         animRight = new Animation(100, Assets.player_right);
+        animRight0 = new Animation(100, Assets.player_right0);
+        animLeft = new Animation(100, Assets.player_left);
+        animTop = new Animation(100, Assets.player_top);
+        animDown = new Animation(100, Assets.player_down);
     }
 
     public void tick() {
@@ -97,7 +106,7 @@ public class Player extends Creature {
 
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
-                (int) (y - handler.getGameCamera().getyOffset()), 64, 64, null);
+                (int) (y - handler.getGameCamera().getyOffset()), 128, 128, null);
         /*g.setColor(Color.red);
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
@@ -106,15 +115,15 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
-            return animRight.getCurrentFrame();
+            return animLeft.getCurrentFrame();
         } else if (xMove > 0) {
-            return animRight.getCurrentFrame();
+            return animRight0.getCurrentFrame();
         } else if (yMove < 0) {
-            return animRight.getCurrentFrame();
+            return animDown.getCurrentFrame();
         } else if (yMove > 0) {
-            return animRight.getCurrentFrame();
+            return animTop.getCurrentFrame();
         } else {
-            return Assets.player;
+            return Assets.player_top[0];
         }
     }
 
