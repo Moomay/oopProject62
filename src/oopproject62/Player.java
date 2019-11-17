@@ -21,8 +21,7 @@ public class Player extends Creature {
     private Animation animLeft;
     private Animation animDown;
     private Animation animTop;
-    
-    private int stage = 0;
+
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, 64, 64);
 
@@ -115,19 +114,15 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
-            stage = 1;
-            return animLeft.getCurrentFrame();        
+            return animRight0.getCurrentFrame();
         } else if (xMove > 0) {
-            stage = 0;
             return animRight0.getCurrentFrame();
         } else if (yMove < 0) {
-            stage = 2;
-            return animDown.getCurrentFrame();
+            return animRight0.getCurrentFrame();
         } else if (yMove > 0) {
-            stage = 3;
-            return animTop.getCurrentFrame();
+            return animRight0.getCurrentFrame();
         } else {
-            return Assets.player_idle[stage];
+            return Assets.player_top[0];
         }
     }
 
