@@ -16,10 +16,12 @@ public class Assets {
     public static final int width = 24,height = 24;
     public static BufferedImage player, dirt, grass, water,tree;
     public static BufferedImage[] player_right;
+    public static BufferedImage[] btn_start;
 
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("mani-idle-run.png"));
         player_right = new BufferedImage[6];
+        btn_start = new BufferedImage[2];
 
         player_right[0] = sheet.crop(width, 0, width,height);
         player_right[1] = sheet.crop(width*2, 0, width,height);
@@ -27,10 +29,13 @@ public class Assets {
         player_right[3] = sheet.crop(width*4, 0, width,height);
         player_right[4] = sheet.crop(width*5, 0, width,height);
         player_right[5] = sheet.crop(width*6, 0, width,height);
+        btn_start[0] = ImageLoader.loadImage("imgB.png");
+        btn_start[1] = ImageLoader.loadImage("imgB1.png");
         player = sheet.crop(0, 0, 24, 24);
         tree = ImageLoader.loadImage("tree.png");
         dirt = ImageLoader.loadImage("dirt.png");
         grass = ImageLoader.loadImage("grass.png");
         water = ImageLoader.loadImage("water.png");
+        
     }
 }

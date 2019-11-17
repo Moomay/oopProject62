@@ -68,7 +68,7 @@ public class GameController implements Runnable {
         gameCamera = new GameCamera(handler, 0, 0);
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        State.setState(gameState);
+        State.setState(menuState);
 
     }
 
@@ -193,5 +193,6 @@ public class GameController implements Runnable {
         // TODO code application logic here
         GameController game = new GameController();
         game.start();
+        
     }
 }

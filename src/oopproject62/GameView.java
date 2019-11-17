@@ -34,7 +34,7 @@ public class GameView extends JPanel {
         // step 1
         f1 = new JFrame("ทดสอบ");
         
-        mb1 = new JMenuBar();
+        /*mb1 = new JMenuBar();
         
         m1 = new JMenu("File");
         m2 = new JMenu("New");
@@ -44,7 +44,7 @@ public class GameView extends JPanel {
         mi3 = new JMenuItem("Exit");
         mi4 = new JMenuItem("Window");
         mi5 = new JMenuItem("Message");
-        
+        */
         c1 = new Canvas();
         // step 2
         f1.setSize(width, height);
@@ -60,7 +60,7 @@ public class GameView extends JPanel {
         // step 3
         f1.setJMenuBar(mb1);
 
-        mb1.add(m1);
+        /*mb1.add(m1);
 
         m1.add(m2);
         m1.add(mi1);
@@ -68,7 +68,7 @@ public class GameView extends JPanel {
         m1.add(mi3);
 
         m2.add(mi4);
-        m2.add(mi5);
+        m2.add(mi5);*/
         f1.add(c1);
         f1.getContentPane().setBackground(Color.black);
         f1.pack();
