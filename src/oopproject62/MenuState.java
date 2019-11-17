@@ -14,8 +14,8 @@ import java.awt.Graphics;
 public class MenuState extends State{
 
    
-    public MenuState(GameController game){
-        super(game);
+    public MenuState(Handler handler){
+        super(handler);
     }
     public void tick() {
         

@@ -15,17 +15,18 @@ public class GameState extends State{
     
     private Player p1;
     private World world;
-    GameState(GameController game){
-        super(game);
-        p1 = new Player(game,64,64);
-        world = new World(game,"world1.txt");
+    GameState(Handler handler){
+        super(handler);
         
-        game.getGameCamera().move(0, 0);
+        world = new World(handler,"world1.txt");
+        handler.setWorld(world);
+        p1 = new Player(handler,64,64);
+        
     }
     public void tick() {
         world.tick();
         p1.tick();
-        game.getGameCamera().move(1,1);
+        handler.getGameCamera().move(1,1);
     }
 
     

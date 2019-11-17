@@ -38,23 +38,25 @@ public class GameController implements Runnable {
     private KeyManager k1;
     //camera
     private GameCamera gameCamera;
-
+    //handler
+    private Handler handler;
     public GameController() {
 
     }
 
     private void init() {
         view = new GameView(width, height);
-        k1 = new KeyManager();
-        gameCamera = new GameCamera(this, 0, 0);
-
+        k1 = new KeyManager();        
+                  
         view.init();
         Assets.init();
 
         view.getF1().addKeyListener(k1);
-
-        gameState = new GameState(this);
-        menuState = new MenuState(this);
+        
+        handler = new Handler(this);
+        gameCamera = new GameCamera(handler, 0, 0);
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
         State.setState(gameState);
 
     }

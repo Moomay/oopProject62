@@ -6,23 +6,28 @@
 package oopproject62;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  *
  * @author Jame
  */
 public abstract class Entity {
-
+    
+    protected Handler handler;
     protected GameController game;
     protected float x, y;
     protected float width, height;
+    protected Rectangle bounds;
 
-    public Entity(GameController game, float x, float y, int width, int height) {
-        this.game = game;
+    public Entity(Handler handler, float x, float y, int width, int height) {
+        this.handler = handler;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        
+        bounds = new Rectangle(0, 0, width, height);
     }
 
     public float getX() {

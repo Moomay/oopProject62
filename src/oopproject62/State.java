@@ -13,9 +13,9 @@ import java.awt.Graphics;
  */
 public abstract class State {
     private static State currentState = null;
-    protected GameController game;
-    public State(GameController game){
-        this.game = game;
+    protected Handler handler;
+    public State(Handler handler){
+        this.handler = handler;
     }
     public static void setState(State state){
         currentState = state;
