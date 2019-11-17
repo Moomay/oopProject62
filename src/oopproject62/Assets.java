@@ -21,6 +21,7 @@ public class Assets {
     public static BufferedImage[] player_down;
     public static BufferedImage[] player_right0;
     public static BufferedImage[] btn_start;
+    public static BufferedImage[] player_idle;
 
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("mani-idle-run.png"));
@@ -30,6 +31,7 @@ public class Assets {
         player_top = new BufferedImage[15];
         player_down = new BufferedImage[15];
         btn_start = new BufferedImage[2];
+        player_idle = new BufferedImage[4];
         
         player_right[0] = sheet.crop(width, 0, width,height);
         player_right[1] = sheet.crop(width*2, 0, width,height);
@@ -76,6 +78,10 @@ public class Assets {
             player_top[i] = ImageLoader.loadImage("player/font/0_Warrior_Run_0"+j+".png");
             j = "";
         }
+        player_idle[0] = player_right0[0];
+        player_idle[1] = player_left[0];
+        player_idle[2] = player_down[0];
+        player_idle[3] = player_top[0];
         btn_start[0] = ImageLoader.loadImage("imgB.png");
         btn_start[1] = ImageLoader.loadImage("imgB1.png");
         player = sheet.crop(0, 0, 24, 24);

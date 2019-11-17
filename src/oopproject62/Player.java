@@ -115,15 +115,19 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
-            return animLeft.getCurrentFrame();
+            stage = 1;
+            return animLeft.getCurrentFrame();        
         } else if (xMove > 0) {
+            stage = 0;
             return animRight0.getCurrentFrame();
         } else if (yMove < 0) {
+            stage = 2;
             return animDown.getCurrentFrame();
         } else if (yMove > 0) {
+            stage = 3;
             return animTop.getCurrentFrame();
         } else {
-            return Assets.player_top[0];
+            return Assets.player_idle[stage];
         }
     }
 
