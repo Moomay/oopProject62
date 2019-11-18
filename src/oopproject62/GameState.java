@@ -25,19 +25,23 @@ public class GameState extends State {
         handler.setWorld(world);
         
         
+        
 
     }
 
     public void tick() {
         world.tick();
         
+        
+        //handler.getMouseManager().setUIManager(null);
+        //State.setState(handler.getGame().gameState);
         /*p1.tick();
         tree.tick();*/
     }
 
     public void render(Graphics g) {
         world.render(g);
-        
+       
         /*p1.render(g);
         tree.render(g);*/
     }

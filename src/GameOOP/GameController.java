@@ -3,8 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oopproject62;
+package GameOOP;
 
+/**
+ *
+ * @author Jame
+ */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,7 +32,7 @@ public class GameController implements Runnable {
     //set up screen
     private int width = 1280;
     private int height = 640;
-   
+
     private BufferedImage testImage;
     private GameView view;
     private ImageIcon i;
@@ -32,9 +41,7 @@ public class GameController implements Runnable {
     private Thread thread0;
     private boolean running = false;
     //stage
-    public MenuState menuState;
-    public GameState gameState;
-    
+    private World world;
     private BufferStrategy bs;
     private Graphics g;
     //input
@@ -44,7 +51,10 @@ public class GameController implements Runnable {
     private GameCamera gameCamera;
     //handler
     private Handler handler;
-
+    //player
+    private Player player;
+    //e man
+    private EntityManager entityManager;
     public GameController() {
 
     }
@@ -53,31 +63,39 @@ public class GameController implements Runnable {
         view = new GameView(width, height);
         k1 = new KeyManager();
         m1 = new MouseManager();
-
+        
         view.init();
         Assets.init();
 
         view.getF1().addKeyListener(k1);
         view.getF1().addMouseListener(m1);
         view.getF1().addMouseMotionListener(m1);
-        
+
         view.getC1().addMouseMotionListener(m1);
         view.getC1().addMouseListener(m1);
-        
-        handler = new Handler(this);
-        gameCamera = new GameCamera(handler, 0, 0);
-        gameState = new GameState(handler);
-        menuState = new MenuState(handler);
-        State.setState(menuState);
 
+        handler = new Handler(this);
+        world = new World(handler, "world1.txt");
+        gameCamera = new GameCamera(handler, 0, 0);
+        
+        entityManager = new EntityManager(handler, new Player(handler, 128, 128));
+        entityManager.getPlayer().setX(world.getSpawnX());
+        entityManager.getPlayer().setY(world.getSpawnY());
+        entityManager.addEntity(new Tree(handler, 200, 250));
+        entityManager.addEntity(new Tree(handler, 150, 500));
+        entityManager.addEntity(new Rock(handler, 100, 450));
+        entityManager.addEntity(new Rock(handler, 300, 230));
+        
+        handler.setWorld(world);
+        
+        
+        
     }
 
     private void tick() {
-        k1.tick();
         
-        if (State.getCurrentState() != null) {
-            State.getCurrentState().tick();
-        }
+        k1.tick();
+        entityManager.tick();
     }
 
     private void render() {
@@ -89,7 +107,12 @@ public class GameController implements Runnable {
         g = bs.getDrawGraphics();
         //Claer Screen
         g.clearRect(0, 0, width, height);
+        
         //Draw
+        world.render(g);
+        entityManager.render(g);
+        
+        //System.out.println(entityManager.getPlayer().x - handler.getGameCamera().getxOffset() + "   " + (entityManager.getPlayer().y - handler.getGameCamera().getyOffset()));
         /*g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
         ImageIcon i = new ImageIcon("test.jpg");
@@ -97,9 +120,6 @@ public class GameController implements Runnable {
         g.drawImage(img, 200, 300, null);*/
 
         //168 x 24 : 7
-        if (State.getCurrentState() != null) {
-            State.getCurrentState().render(g);
-        }
         //end Drawing
         bs.show();
         g.dispose();
@@ -138,18 +158,6 @@ public class GameController implements Runnable {
         stop();
     }
 
-    public KeyManager getKeyManager() {
-        return k1;
-    }
-
-    public MouseManager getMouseManager() {
-        return m1;
-    }
-
-    public GameCamera getGameCamera() {
-        return gameCamera;
-    }
-
     public int getWidth() {
         return width;
     }
@@ -165,9 +173,11 @@ public class GameController implements Runnable {
     public void setHeight(int height) {
         this.height = height;
     }
-    public GameView getView(){
+
+    public GameView getView() {
         return view;
     }
+
     public synchronized void start() {
         running = true;
         thread0 = new Thread(this);
@@ -185,11 +195,45 @@ public class GameController implements Runnable {
             System.out.println(e);
         }
     }
-    
+
     public static void main(String[] args) {
         // TODO code application logic here
         GameController game = new GameController();
         game.start();
-        
+
     }
+
+    public KeyManager getK1() {
+        return k1;
+    }
+
+    public void setK1(KeyManager k1) {
+        this.k1 = k1;
+    }
+
+    public MouseManager getM1() {
+        return m1;
+    }
+
+    public void setM1(MouseManager m1) {
+        this.m1 = m1;
+    }
+
+    public GameCamera getGameCamera() {
+        return gameCamera;
+    }
+
+    public void setGameCamera(GameCamera gameCamera) {
+        this.gameCamera = gameCamera;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+    
+    
 }

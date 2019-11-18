@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oopproject62;
+package GameOOP;
 
 import java.awt.Graphics;
 
@@ -17,26 +17,25 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
-    private EntityManager entityManager;
+    //private EntityManager entityManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 128, 128));
+        /*entityManager = new EntityManager(handler, new Player(handler, 128, 128));
         entityManager.addEntity(new Tree(handler, 200, 250));
         entityManager.addEntity(new Tree(handler, 150, 500));
         entityManager.addEntity(new Rock(handler, 100, 450));
-        entityManager.addEntity(new Rock(handler, 300, 230));
+        entityManager.addEntity(new Rock(handler, 300, 230));*/
         loadWorld(path);
 
-        entityManager.getPlayer().setX(spawnX);
-        entityManager.getPlayer().setY(spawnY);
+        /*entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);*/
         
 
     }
 
     public void tick() {
-        entityManager.tick();
-
+        
     }
 
     public void render(Graphics g) {
@@ -53,7 +52,7 @@ public class World {
             }
         }
         //entity
-        entityManager.render(g);
+        /*entityManager.render(g);*/
 
     }
 
@@ -93,12 +92,27 @@ public class World {
         return height;
     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-    
     public Handler getHandler() {
         return handler;
+    }
+    /*public EntityManager getEntityManager() {
+        return entityManager;
+    }*/
+
+    public int getSpawnX() {
+        return spawnX;
+    }
+
+    public void setSpawnX(int spawnX) {
+        this.spawnX = spawnX;
+    }
+
+    public int getSpawnY() {
+        return spawnY;
+    }
+
+    public void setSpawnY(int spawnY) {
+        this.spawnY = spawnY;
     }
 
 }
