@@ -36,19 +36,19 @@ public class KeyManager implements KeyListener {
 
     public void keyTyped(KeyEvent ke) {
         keys[ke.getKeyCode()] = true;
-        System.out.println("Typed");
+       
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
         keys[ke.getKeyCode()] = true;
-        System.out.println("Pressed");
+        
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
-        System.out.println("Released");
+        
     }
 
 }

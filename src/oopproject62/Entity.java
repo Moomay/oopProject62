@@ -52,6 +52,9 @@ public abstract class Entity {
             die();
         }
     }
+    public void changeMap(){
+        State.setState(handler.getGame().menuState);
+    }
     public abstract void die();
     public float getX() {
         return x;

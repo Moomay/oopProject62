@@ -19,5 +19,8 @@ public class WatterTile extends Tile{
     public WatterTile(int id) {
         super(Assets.water, id);
     }
+    public boolean isSolid() {
+        return true;
+    }
     
 }

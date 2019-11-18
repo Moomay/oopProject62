@@ -21,7 +21,8 @@ public class Player extends Creature {
     private Animation animLeft;
     private Animation animDown;
     private Animation animTop;
-
+    private BufferedImage[] idle;
+    private int stage = 0;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, 64, 64);
 
@@ -29,6 +30,10 @@ public class Player extends Creature {
         bounds.y = 70;
         bounds.width = 32;
         bounds.height = 32;
+        
+        idle = new BufferedImage[4];
+        idle = Assets.player_idle;
+        
         //Animation
         animRight = new Animation(100, Assets.player_right);
         animRight0 = new Animation(100, Assets.player_right0);
@@ -39,7 +44,10 @@ public class Player extends Creature {
 
     public void tick() {
         //animation
-        animRight.tick();
+        animRight0.tick();
+        animLeft.tick();
+        animTop.tick();
+        animDown.tick();
         //move
         getInput();
         move();
@@ -114,15 +122,19 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
-            return animRight0.getCurrentFrame();
+            stage = 1;
+            return animLeft.getCurrentFrame();
         } else if (xMove > 0) {
+            stage = 0;
             return animRight0.getCurrentFrame();
         } else if (yMove < 0) {
-            return animRight0.getCurrentFrame();
+            stage = 2;
+            return animDown.getCurrentFrame();
         } else if (yMove > 0) {
-            return animRight0.getCurrentFrame();
+            stage = 3;
+            return animTop.getCurrentFrame();
         } else {
-            return Assets.player_top[0];
+            return Assets.player_idle[stage];
         }
     }
 
