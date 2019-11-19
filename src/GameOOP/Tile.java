@@ -21,6 +21,9 @@ public class Tile {
     public static Tile watterTile = new WatterTile(2);
     public static Tile grass24Tile = new Grass24Tile(24);
     public static Tile grass25Tile = new Grass25Tile(25);
+    public static Tile grass26Tile = new Grass26Tile(26);
+    public static Tile grass27Tile = new Grass27Tile(26);
+    
     //class
     public static final int TILEWIDTH= 64, TILEHEIGHT = 64;
     protected BufferedImage texture;
