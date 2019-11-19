@@ -42,6 +42,7 @@ public class GameController implements Runnable {
     private boolean running = false;
     //stage
     private World world;
+    private World world1;
     private BufferStrategy bs;
     private Graphics g;
     //input
@@ -70,6 +71,7 @@ public class GameController implements Runnable {
 
         handler = new Handler(this);
         world = new World(handler, "world1.txt");
+        world1 = new World(handler, "world2.txt");
         gameCamera = new GameCamera(handler, 0, 0);
 
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
@@ -81,8 +83,8 @@ public class GameController implements Runnable {
         entityManager.addEntity(new Rock(handler, 450, 450));
         itemManager.addItem(Item.boxItem.createNew(300, 300));
 
-        handler.setWorld(world);
-
+        handler.addWorld(world);
+        handler.addWorld(world1);
         m1 = new MouseManager(handler);
         view.getF1().addKeyListener(k1);
         view.getF1().addMouseListener(m1);
@@ -114,6 +116,7 @@ public class GameController implements Runnable {
 
         //Draw
         world.render(g);
+        world1.render(g);
         itemManager.render(g);
 
         entityManager.render(g);

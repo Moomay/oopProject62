@@ -5,6 +5,8 @@
  */
 package GameOOP;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Jame
@@ -23,14 +25,16 @@ package GameOOP;
 public class Handler {
 
     private GameController game;
-    private World world;
+    
+    private LinkedList <World> worlds;
     public Handler(GameController game) {
+        LinkedList<World> object = new LinkedList<World>();
         this.game = game;
     }
 
     public Handler(GameController game, World world) {
         this.game = game;
-        this.world = world;
+        worlds.add(world);
     }
     
     public GameCamera getGameCamera() {
@@ -49,7 +53,9 @@ public class Handler {
     public int getWidth() {
         return game.getWidth();
     }
-
+    public void addWorld(World world){
+         worlds.add(world);
+    }
     public int getHeight() {
         return game.getHeight();
     }
@@ -66,9 +72,7 @@ public class Handler {
         return world;
     }
 
-    public void setWorld(World world) {
-        this.world = world;
-    }
+    
     public EntityManager getEntityManager(){
         return game.getEntityManager();
     }
