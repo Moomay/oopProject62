@@ -15,8 +15,9 @@ import oopproject62.SpriteSheet;
  */
 public class Assets {
 
+    public static final int tileW = 16, tileH = 16;
     public static final int width = 24, height = 24;
-    public static BufferedImage player, dirt, grass, water, tree, rock,box;
+    public static BufferedImage player, dirt, grass, water, tree, rock, box;
     public static BufferedImage[] player_right;
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_top;
@@ -31,10 +32,13 @@ public class Assets {
     public static BufferedImage[] playerNew_left;
     public static BufferedImage[] playerNew_right;
 
+    public static BufferedImage[] tiles;
     public static BufferedImage inventory;
+
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("mani-idle-run.png"));
         SpriteSheet playerSp = new SpriteSheet(ImageLoader.loadImage("player.png"));
+        SpriteSheet worldsheet = new SpriteSheet(ImageLoader.loadImage("tile.png"));
         player_right = new BufferedImage[6];
         player_right0 = new BufferedImage[15];
         player_left = new BufferedImage[15];
@@ -48,6 +52,8 @@ public class Assets {
         playerNew_down = new BufferedImage[3];
         playerNew_right = new BufferedImage[3];
         playerNew_left = new BufferedImage[3];
+        //world tile 22:21 16*16
+        tiles = new BufferedImage[456];
 
         player_right[0] = sheet.crop(width, 0, width, height);
         player_right[1] = sheet.crop(width * 2, 0, width, height);
@@ -131,5 +137,11 @@ public class Assets {
         rock = ImageLoader.loadImage("rock.png");
         box = ImageLoader.loadImage("box.png");
         inventory = ImageLoader.loadImage("ui.png");
+        for (int y = 0; y < 21; y++) {
+            for (int x = 0; x < 22; x++) {
+                tiles[x * y] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
+            }
+        }
+
     }
 }
