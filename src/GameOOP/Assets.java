@@ -31,6 +31,7 @@ public class Assets {
     public static BufferedImage[] playerNew_left;
     public static BufferedImage[] playerNew_right;
 
+    public static BufferedImage inventory;
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("mani-idle-run.png"));
         SpriteSheet playerSp = new SpriteSheet(ImageLoader.loadImage("player.png"));
@@ -129,5 +130,6 @@ public class Assets {
         water = ImageLoader.loadImage("water.png");
         rock = ImageLoader.loadImage("rock.png");
         box = ImageLoader.loadImage("box.png");
+        inventory = ImageLoader.loadImage("ui.png");
     }
 }

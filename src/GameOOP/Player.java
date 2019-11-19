@@ -30,7 +30,8 @@ public class Player extends Creature {
     private BufferedImage[] idle;
     private int stage = 0;
     private boolean hovering = false;
-
+    
+    private Inventory inventory;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, 128, 128);
 
@@ -54,6 +55,8 @@ public class Player extends Creature {
         animNLeft = new Animation(100, Assets.playerNew_left);
         animNTop = new Animation(100, Assets.playerNew_top);
         animNDown = new Animation(100, Assets.playerNew_down);
+        
+        inventory = new Inventory(handler);
     }
 
     public void tick() {
@@ -73,6 +76,8 @@ public class Player extends Creature {
         handler.getGameCamera().centerOnEntity(this);
         //atk
         checkAttacks();
+        //inventory
+        inventory.tick();
         
         
     }
@@ -142,7 +147,10 @@ public class Player extends Creature {
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
                 bounds.width, bounds.height);
-
+        
+    }
+    public void postRender(Graphics g){
+        inventory.render(g);
     }
 
     private BufferedImage getCurrentAnimationFrame() {
@@ -161,6 +169,10 @@ public class Player extends Creature {
         } else {
             return Assets.playerNew_idle[stage];
         }
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
     
 

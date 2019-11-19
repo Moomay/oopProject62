@@ -20,9 +20,8 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     private Handler handler;
 
     public MouseManager(Handler handler) {
-         this.handler = handler;
+        this.handler = handler;
     }
-
 
     public boolean isLeftPressed() {
         return leftPressed;
@@ -45,28 +44,30 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     public void mousePressed(MouseEvent me) {
         if (me.getButton() == MouseEvent.BUTTON1) {
-            System.out.println("L Click   " + mouseX + "//" + mouseY );
+            //System.out.println("L Click   " + mouseX + "//" + mouseY );
             leftPressed = true;
         } else if (me.getButton() == MouseEvent.BUTTON3) {
-            System.out.println("R Click");
+            //System.out.println("R Click");
             rightPressed = true;
         }
     }
 
     public void mouseReleased(MouseEvent me) {
         if (me.getButton() == MouseEvent.BUTTON1) {
-            if (mouseX >= 10 && mouseX <= 60 &&mouseY >= 10 && mouseY <= 210){
-                System.out.println("Here ON");
-            }
-            System.out.println("RE L");
-            
             leftPressed = false;
+            if (handler.getEntityManager().getPlayer().getInventory().isActive()) {
+
+                if (mouseX >= 20 && mouseX <= 620 && mouseY >= 400 && mouseY <= 640) {
+                    System.out.println("Here ON");
+                }
+                System.out.println("RE L");
+
+            }
         } else if (me.getButton() == MouseEvent.BUTTON3) {
             System.out.println("RE R");
             rightPressed = false;
         }
-        
-        
+
     }
 
     public void mouseEntered(MouseEvent me) {
@@ -82,8 +83,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         mouseX = me.getX();
         mouseY = me.getY();
         //System.out.println(mouseX+ "//" +mouseY);
-        
+
     }
-    
 
 }

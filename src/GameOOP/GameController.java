@@ -64,22 +64,14 @@ public class GameController implements Runnable {
     void init() {
         view = new GameView(width, height);
         k1 = new KeyManager();
-         m1 = new MouseManager(handler);
-        
+
         view.init();
         Assets.init();
-
-        view.getF1().addKeyListener(k1);
-        view.getF1().addMouseListener(m1);
-        view.getF1().addMouseMotionListener(m1);
-
-        view.getC1().addMouseMotionListener(m1);
-        view.getC1().addMouseListener(m1);
 
         handler = new Handler(this);
         world = new World(handler, "world1.txt");
         gameCamera = new GameCamera(handler, 0, 0);
-        
+
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new Tree(handler, 256, 256));
@@ -88,20 +80,26 @@ public class GameController implements Runnable {
         entityManager.addEntity(new Rock(handler, 300, 230));
         entityManager.addEntity(new Rock(handler, 450, 450));
         itemManager.addItem(Item.boxItem.createNew(300, 300));
-        
+
         handler.setWorld(world);
-        
-        
-        
+
+        m1 = new MouseManager(handler);
+        view.getF1().addKeyListener(k1);
+        view.getF1().addMouseListener(m1);
+        view.getF1().addMouseMotionListener(m1);
+
+        view.getC1().addMouseMotionListener(m1);
+        view.getC1().addMouseListener(m1);
+
     }
 
     private void tick() {
-        
+
         k1.tick();
         itemManager.tick();
-        
+
         entityManager.tick();
-        
+
     }
 
     private void render() {
@@ -113,13 +111,13 @@ public class GameController implements Runnable {
         g = bs.getDrawGraphics();
         //Claer Screen
         g.clearRect(0, 0, width, height);
-        
+
         //Draw
         world.render(g);
         itemManager.render(g);
-        
+
         entityManager.render(g);
-        
+
         g.setColor(Color.red);
         //g.fillRect(10, 10, 50, 200);
         //System.out.println(entityManager.getPlayer().x - handler.getGameCamera().getxOffset() + "   " + (entityManager.getPlayer().y - handler.getGameCamera().getyOffset()));
@@ -244,6 +242,5 @@ public class GameController implements Runnable {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-    
-    
+
 }

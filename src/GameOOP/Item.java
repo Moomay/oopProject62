@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
  */
 public class Item {
 
-    public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32, PICKED_UP = -1;
+    public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
     public static Item[] item = new Item[256];
     public static Item boxItem = new Item(Assets.box, "box", 0);
     
@@ -26,7 +26,8 @@ public class Item {
     
     protected Rectangle bounds;
     protected int x, y, count;
-
+    
+    protected boolean pickedUp = false;
     public Item(BufferedImage texture, String name, int id) {
         this.texture = texture;
         this.name = name;
@@ -37,7 +38,8 @@ public class Item {
 
     public void tick() {
         if (handler.getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
-            count = PICKED_UP;
+            pickedUp = true;
+            handler.getEntityManager().getPlayer().getInventory().addItem(this);
         }
     }
 
@@ -89,6 +91,16 @@ public class Item {
     public int getCount() {
         return count;
     }
+
+    public boolean isPickedUp() {
+        return pickedUp;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    
     
     
 }
