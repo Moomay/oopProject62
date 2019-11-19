@@ -5,6 +5,7 @@
  */
 package GameOOP;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,11 @@ public class Player extends Creature {
     private Animation animLeft;
     private Animation animDown;
     private Animation animTop;
+    
+    private Animation animNRight;
+    private Animation animNLeft;
+    private Animation animNDown;
+    private Animation animNTop;
     private BufferedImage[] idle;
     private int stage = 0;
     private boolean hovering = false;
@@ -28,8 +34,8 @@ public class Player extends Creature {
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, 128, 128);
 
-        bounds.x = 50;
-        bounds.y = 70;
+        bounds.x = 15;
+        bounds.y = 35;
         bounds.width = 32;
         bounds.height = 32;
 
@@ -42,6 +48,12 @@ public class Player extends Creature {
         animLeft = new Animation(100, Assets.player_left);
         animTop = new Animation(100, Assets.player_top);
         animDown = new Animation(100, Assets.player_down);
+        
+        
+        animNRight = new Animation(100, Assets.playerNew_right);
+        animNLeft = new Animation(100, Assets.playerNew_left);
+        animNTop = new Animation(100, Assets.playerNew_top);
+        animNDown = new Animation(100, Assets.playerNew_down);
     }
 
     public void tick() {
@@ -50,6 +62,11 @@ public class Player extends Creature {
         animLeft.tick();
         animTop.tick();
         animDown.tick();
+        
+        animNRight.tick();
+        animNLeft.tick();
+        animNTop.tick();
+        animNDown.tick();
         //move
         getInput();
         move();
@@ -57,8 +74,9 @@ public class Player extends Creature {
         //atk
         checkAttacks();
         
+        
     }
-
+   
    
     
     public void checkAttacks() {
@@ -70,6 +88,7 @@ public class Player extends Creature {
         if (handler.getKeyManager().aUp) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y - arSize;
+            System.out.println(" "+x+"      "+y);
         } else if (handler.getKeyManager().aDown) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y + cb.height;
@@ -118,30 +137,31 @@ public class Player extends Creature {
 
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
-                (int) (y - handler.getGameCamera().getyOffset()), 128, 128, null);
-        /*g.setColor(Color.red);
+                (int) (y - handler.getGameCamera().getyOffset()), 64, 64, null);
+        g.setColor(Color.red);
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
-                bounds.width, bounds.height);*/
+                bounds.width, bounds.height);
 
     }
 
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             stage = 1;
-            return animLeft.getCurrentFrame();
+            return animNLeft.getCurrentFrame();
         } else if (xMove > 0) {
             stage = 0;
-            return animRight0.getCurrentFrame();
+            return animNRight.getCurrentFrame();
         } else if (yMove < 0) {
-            stage = 2;
-            return animDown.getCurrentFrame();
-        } else if (yMove > 0) {
             stage = 3;
-            return animTop.getCurrentFrame();
+            return animNTop.getCurrentFrame();
+        } else if (yMove > 0) {
+            stage = 2;
+            return animNDown.getCurrentFrame();
         } else {
-            return Assets.player_idle[stage];
+            return Assets.playerNew_idle[stage];
         }
     }
+    
 
 }

@@ -30,7 +30,7 @@ import javax.swing.ImageIcon;
 public class GameController implements Runnable {
 
     //set up screen
-    private int width = 1280;
+    private int width = 640;
     private int height = 640;
 
     private BufferedImage testImage;
@@ -55,6 +55,8 @@ public class GameController implements Runnable {
     private Player player;
     //e man
     private EntityManager entityManager;
+    private ItemManager itemManager;
+
     public GameController() {
 
     }
@@ -62,7 +64,7 @@ public class GameController implements Runnable {
     void init() {
         view = new GameView(width, height);
         k1 = new KeyManager();
-        m1 = new MouseManager();
+         m1 = new MouseManager(handler);
         
         view.init();
         Assets.init();
@@ -78,13 +80,14 @@ public class GameController implements Runnable {
         world = new World(handler, "world1.txt");
         gameCamera = new GameCamera(handler, 0, 0);
         
-        entityManager = new EntityManager(handler, new Player(handler, 128, 128));
-        entityManager.getPlayer().setX(world.getSpawnX());
-        entityManager.getPlayer().setY(world.getSpawnY());
-        entityManager.addEntity(new Tree(handler, 200, 250));
+        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
+        itemManager = new ItemManager(handler);
+        entityManager.addEntity(new Tree(handler, 256, 256));
         entityManager.addEntity(new Tree(handler, 150, 500));
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Rock(handler, 300, 230));
+        entityManager.addEntity(new Rock(handler, 450, 450));
+        itemManager.addItem(Item.boxItem.createNew(300, 300));
         
         handler.setWorld(world);
         
@@ -95,7 +98,10 @@ public class GameController implements Runnable {
     private void tick() {
         
         k1.tick();
+        itemManager.tick();
+        
         entityManager.tick();
+        
     }
 
     private void render() {
@@ -110,8 +116,12 @@ public class GameController implements Runnable {
         
         //Draw
         world.render(g);
+        itemManager.render(g);
+        
         entityManager.render(g);
         
+        g.setColor(Color.red);
+        //g.fillRect(10, 10, 50, 200);
         //System.out.println(entityManager.getPlayer().x - handler.getGameCamera().getxOffset() + "   " + (entityManager.getPlayer().y - handler.getGameCamera().getyOffset()));
         /*g.setColor(Color.red);
         g.drawRect(20, 10, 50, 200);
@@ -149,7 +159,7 @@ public class GameController implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                System.out.println("Trick and frame: " + ticks);
+                //System.out.println("Trick and frame: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
