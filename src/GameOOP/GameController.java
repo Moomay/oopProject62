@@ -44,6 +44,7 @@ public class GameController implements Runnable {
     private World world;
     private World world1;
     private World world2;
+    private World world3;
     private BufferStrategy bs;
     private Graphics g;
     //input
@@ -74,6 +75,7 @@ public class GameController implements Runnable {
         world = new World(handler, "world1.txt");
         world1 = new World(handler, "world2.txt");
         world2 = new World(handler, "world3.txt");
+        world3 = new World(handler, "world4.txt");
         gameCamera = new GameCamera(handler, 0, 0);
 
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
@@ -88,6 +90,7 @@ public class GameController implements Runnable {
         handler.addWorld(world);
         handler.addWorld(world1);
         handler.addWorld(world2);
+        handler.addWorld(world3);
         m1 = new MouseManager(handler);
         view.getF1().addKeyListener(k1);
         view.getF1().addMouseListener(m1);
@@ -121,6 +124,7 @@ public class GameController implements Runnable {
         world.render(g);
         world1.render(g);
         world2.render(g);
+        world3.render(g);
         itemManager.render(g);
 
         entityManager.render(g);

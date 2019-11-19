@@ -159,11 +159,11 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()), 64, 64, null);
-        g.setColor(Color.red);
+        /*g.setColor(Color.red);
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
                 bounds.width, bounds.height);
-        
+        */
     }
     public void postRender(Graphics g){
         inventory.render(g);
