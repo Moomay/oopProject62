@@ -11,12 +11,12 @@ import java.awt.image.BufferedImage;
  *
  * @author Kmitl
  */
-public class Tile117 extends Tile{
-    public Tile117(BufferedImage texture, int id) {
-        super(Assets.tiles[117], id);
+public class Tile137 extends Tile{
+    public Tile137(BufferedImage texture, int id) {
+        super(Assets.tiles[137], id);
     }
 
-    public Tile117(int id) {
-        super(Assets.tiles[117], id);
+    public Tile137(int id) {
+        super(Assets.tiles[137], id);
     }
 }
