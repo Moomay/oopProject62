@@ -78,7 +78,7 @@ public abstract class Creature extends Entity {
     }
 
     protected boolean collisionWithTile(int x, int y) {
-        return (handler.getWorld(0).getTile(x, y).isSolid()||handler.getWorld(1).getTile(x, y).isSolid());
+        return (handler.getWorld(0).getTile(x, y).isSolid()||handler.getWorld(1).getTile(x, y).isSolid()||handler.getWorld(2).getTile(x, y).isSolid());
     }
 
     public float getxMove() {
