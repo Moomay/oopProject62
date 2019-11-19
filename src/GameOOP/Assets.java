@@ -139,7 +139,7 @@ public class Assets {
         inventory = ImageLoader.loadImage("ui.png");
         for (int y = 0; y < 21; y++) {
             for (int x = 0; x < 22; x++) {
-                tiles[22*y + x] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
+                tiles[22*y + x+1] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
             }
         }
 
