@@ -28,12 +28,13 @@ public class Handler {
     
     private LinkedList <World> worlds;
     public Handler(GameController game) {
-        LinkedList<World> object = new LinkedList<World>();
+        worlds = new LinkedList<World>();
         this.game = game;
     }
 
     public Handler(GameController game, World world) {
         this.game = game;
+        LinkedList<World> worlds = new LinkedList<World>();
         worlds.add(world);
     }
     
@@ -68,8 +69,8 @@ public class Handler {
         this.game = game;
     }
 
-    public World getWorld() {
-        return world;
+    public World getWorld(int i) {
+        return worlds.get(i);
     }
 
     

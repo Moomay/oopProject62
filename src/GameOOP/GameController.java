@@ -160,7 +160,7 @@ public class GameController implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                //System.out.println("Trick and frame: " + ticks);
+                
                 ticks = 0;
                 timer = 0;
             }
