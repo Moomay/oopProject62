@@ -53,7 +53,7 @@ public class Assets {
         playerNew_right = new BufferedImage[3];
         playerNew_left = new BufferedImage[3];
         //world tile 22:21 16*16
-        tiles = new BufferedImage[456];
+        tiles = new BufferedImage[463];
 
         player_right[0] = sheet.crop(width, 0, width, height);
         player_right[1] = sheet.crop(width * 2, 0, width, height);
@@ -139,7 +139,7 @@ public class Assets {
         inventory = ImageLoader.loadImage("ui.png");
         for (int y = 0; y < 21; y++) {
             for (int x = 0; x < 22; x++) {
-                tiles[x * y] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
+                tiles[22*y + x] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
             }
         }
 
