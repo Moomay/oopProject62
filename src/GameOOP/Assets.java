@@ -5,6 +5,7 @@
  */
 package GameOOP;
 
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import oopproject62.ImageLoader;
 import oopproject62.SpriteSheet;
@@ -34,8 +35,11 @@ public class Assets {
 
     public static BufferedImage[] tiles;
     public static BufferedImage inventory;
-
+    
+    public static Font font28;
     public static void init() {
+        font28 = FontLoader.loadFont("Opun-Regular.ttf", 28);
+        
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("mani-idle-run.png"));
         SpriteSheet playerSp = new SpriteSheet(ImageLoader.loadImage("player.png"));
         SpriteSheet worldsheet = new SpriteSheet(ImageLoader.loadImage("tile.png"));
