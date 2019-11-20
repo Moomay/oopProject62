@@ -30,8 +30,8 @@ import javax.swing.ImageIcon;
 public class GameController implements Runnable {
 
     //set up screen
-    private int width = 640;
-    private int height = 640;
+    private int width = 1280;
+    private int height = 720;
 
     private BufferedImage testImage;
     private GameView view;
@@ -78,7 +78,7 @@ public class GameController implements Runnable {
         world3 = new World(handler, "world4.txt");
         gameCamera = new GameCamera(handler, 0, 0);
 
-        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
+        entityManager = new EntityManager(handler, new Player(handler, 500, 500));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new Tree(handler, 256, 256));
         entityManager.addEntity(new Tree(handler, 150, 500));

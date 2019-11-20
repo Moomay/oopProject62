@@ -22,7 +22,7 @@ public class GameController implements Runnable {
 
     //set up screen
     private int width = 1280;
-    private int height = 640;
+    private int height = 720;
    
     private BufferedImage testImage;
     private GameView view;
