@@ -38,7 +38,7 @@ public class GameView extends JPanel {
 
     public void init() {
         // step 1
-        f1 = new JFrame("ทดสอบ");
+        f1 = new JFrame("Word of the Death");
         
         /*mb1 = new JMenuBar();
         
