@@ -24,6 +24,7 @@ public class Tile {
     //public static Tile grass26Tile = new Grass26Tile(26);
     public static Tile grass27Tile = new Grass27Tile(26);
     //public static Tile tile27 = new Tile(Assets.tiles[0], 0);
+
     public static Tile tile0 = new Tile(Assets.tiles[0], 0);
     public static Tile tile24 = new Tile(Assets.tiles[24], 24);
     public static Tile tile26 = new Tile(Assets.tiles[26], 26);
@@ -31,9 +32,6 @@ public class Tile {
     public static Tile tile29 = new Tile(Assets.tiles[29], 29);
     public static Tile tile30 = new Tile(Assets.tiles[30], 30);
     public static Tile tile31 = new Tile(Assets.tiles[31], 31);
-    public static Tile tile33 = new Tile(Assets.tiles[33], 33);
-    public static Tile tile34 = new Tile(Assets.tiles[34], 34);
-    public static Tile tile35 = new Tile(Assets.tiles[35], 35);
     public static Tile tile36 = new Tile(Assets.tiles[36], 36);
     public static Tile tile37 = new Tile(Assets.tiles[37], 37);
     public static Tile tile39 = new Tile(Assets.tiles[39], 39);
@@ -44,9 +42,6 @@ public class Tile {
     public static Tile tile46 = new Tile(Assets.tiles[46], 46);
     public static Tile tile51 = new Tile(Assets.tiles[51], 51);
     public static Tile tile53 = new Tile(Assets.tiles[53], 53);
-    public static Tile tile55 = new Tile(Assets.tiles[55], 55);
-    public static Tile tile56 = new Tile(Assets.tiles[56], 56);
-    public static Tile tile57 = new Tile(Assets.tiles[57], 57);
     public static Tile tile58 = new Tile(Assets.tiles[58], 58);
     public static Tile tile59 = new Tile(Assets.tiles[59], 59);
     public static Tile tile61 = new Tile(Assets.tiles[61], 61);
@@ -60,7 +55,6 @@ public class Tile {
     public static Tile tile72 = new Tile(Assets.tiles[72], 72);
     public static Tile tile73 = new Tile(Assets.tiles[73], 73);
     public static Tile tile75 = new Tile(Assets.tiles[75], 75);
-    public static Tile tile79 = new Tile(Assets.tiles[79], 79);
     public static Tile tile83 = new Tile(Assets.tiles[83], 83);
     public static Tile tile84 = new Tile(Assets.tiles[84], 84);
     public static Tile tile85 = new Tile(Assets.tiles[85], 85);
@@ -108,7 +102,6 @@ public class Tile {
     public static Tile tile172 = new Tile(Assets.tiles[172], 172);
     public static Tile tile173 = new Tile(Assets.tiles[173], 173);
     public static Tile tile174 = new Tile(Assets.tiles[174], 174);
-    public static Tile tile180 = new Tile(Assets.tiles[180], 180);
     public static Tile tile184 = new Tile(Assets.tiles[184], 184);
     public static Tile tile185 = new Tile(Assets.tiles[185], 185);
     public static Tile tile187 = new Tile(Assets.tiles[187], 187);
@@ -118,42 +111,20 @@ public class Tile {
     public static Tile tile194 = new Tile(Assets.tiles[194], 194);
     public static Tile tile195 = new Tile(Assets.tiles[195], 195);
     public static Tile tile196 = new Tile(Assets.tiles[196], 196);
-    public static Tile tile202 = new Tile(Assets.tiles[202], 202);
-    public static Tile tile206 = new Tile(Assets.tiles[206], 206);
-    public static Tile tile207 = new Tile(Assets.tiles[207], 207);
     public static Tile tile214 = new Tile(Assets.tiles[214], 214);
     public static Tile tile215 = new Tile(Assets.tiles[215], 215);
     public static Tile tile216 = new Tile(Assets.tiles[216], 216);
     public static Tile tile217 = new Tile(Assets.tiles[217], 217);
-    public static Tile tile222 = new Tile(Assets.tiles[222], 222);
-    public static Tile tile223 = new Tile(Assets.tiles[223], 223);
-    public static Tile tile224 = new Tile(Assets.tiles[224], 224);
-    public static Tile tile227 = new Tile(Assets.tiles[227], 227);
-    public static Tile tile228 = new Tile(Assets.tiles[228], 228);
-    public static Tile tile229 = new Tile(Assets.tiles[229], 229);
     public static Tile tile236 = new Tile(Assets.tiles[236], 236);
     public static Tile tile237 = new Tile(Assets.tiles[237], 237);
     public static Tile tile238 = new Tile(Assets.tiles[238], 238);
     public static Tile tile239 = new Tile(Assets.tiles[239], 239);
-    public static Tile tile244 = new Tile(Assets.tiles[244], 244);
-    public static Tile tile245 = new Tile(Assets.tiles[245], 245);
-    public static Tile tile246 = new Tile(Assets.tiles[246], 246);
     public static Tile tile247 = new Tile(Assets.tiles[247], 247);
     public static Tile tile249 = new Tile(Assets.tiles[249], 249);
     public static Tile tile250 = new Tile(Assets.tiles[250], 250);
-    public static Tile tile266 = new Tile(Assets.tiles[266], 266);
-    public static Tile tile267 = new Tile(Assets.tiles[267], 267);
-    public static Tile tile268 = new Tile(Assets.tiles[268], 268);
-    public static Tile tile269 = new Tile(Assets.tiles[269], 269);
-    public static Tile tile271 = new Tile(Assets.tiles[271], 271);
-    public static Tile tile272 = new Tile(Assets.tiles[272], 272);
     public static Tile tile276 = new Tile(Assets.tiles[276], 276);
     public static Tile tile277 = new Tile(Assets.tiles[277], 277);
     public static Tile tile278 = new Tile(Assets.tiles[278], 278);
-    public static Tile tile294 = new Tile(Assets.tiles[294], 294);
-    public static Tile tile295 = new Tile(Assets.tiles[295], 295);
-    public static Tile tile316 = new Tile(Assets.tiles[316], 316);
-    public static Tile tile317 = new Tile(Assets.tiles[317], 317);
     public static Tile tile321 = new Tile(Assets.tiles[321], 321);
     public static Tile tile322 = new Tile(Assets.tiles[322], 322);
     public static Tile tile326 = new Tile(Assets.tiles[326], 326);
@@ -188,6 +159,39 @@ public class Tile {
     public static Tile tile432 = new Tile(Assets.tiles[432], 432);
     public static Tile tile442 = new Tile(Assets.tiles[442], 442);
     public static Tile tile443 = new Tile(Assets.tiles[443], 443);
+    public static Tile tile33 = new Tile(Assets.tiles[33], 33, true);
+    public static Tile tile34 = new Tile(Assets.tiles[34], 34, true);
+    public static Tile tile35 = new Tile(Assets.tiles[35], 35, true);
+    public static Tile tile55 = new Tile(Assets.tiles[55], 55, true);
+    public static Tile tile56 = new Tile(Assets.tiles[56], 56, true);
+    public static Tile tile57 = new Tile(Assets.tiles[57], 57, true);
+    public static Tile tile79 = new Tile(Assets.tiles[79], 79, true);
+    public static Tile tile180 = new Tile(Assets.tiles[180], 180, true);
+    public static Tile tile202 = new Tile(Assets.tiles[202], 202, true);
+    public static Tile tile206 = new Tile(Assets.tiles[206], 206, true);
+    public static Tile tile207 = new Tile(Assets.tiles[207], 207, true);
+    public static Tile tile208 = new Tile(Assets.tiles[208], 208, true);
+    public static Tile tile222 = new Tile(Assets.tiles[222], 222, true);
+    public static Tile tile223 = new Tile(Assets.tiles[223], 223, true);
+    public static Tile tile224 = new Tile(Assets.tiles[224], 224, true);
+    public static Tile tile227 = new Tile(Assets.tiles[227], 227, true);
+    public static Tile tile228 = new Tile(Assets.tiles[228], 228, true);
+    public static Tile tile229 = new Tile(Assets.tiles[229], 229, true);
+    public static Tile tile244 = new Tile(Assets.tiles[244], 244, true);
+    public static Tile tile245 = new Tile(Assets.tiles[245], 245, true);
+    public static Tile tile246 = new Tile(Assets.tiles[246], 246, true);
+    public static Tile tile266 = new Tile(Assets.tiles[266], 266, true);
+    public static Tile tile267 = new Tile(Assets.tiles[267], 267, true);
+    public static Tile tile268 = new Tile(Assets.tiles[268], 268, true);
+    public static Tile tile269 = new Tile(Assets.tiles[269], 269, true);
+    public static Tile tile270 = new Tile(Assets.tiles[270], 270, true);
+    public static Tile tile271 = new Tile(Assets.tiles[271], 271, true);
+    public static Tile tile272 = new Tile(Assets.tiles[272], 272, true);
+    public static Tile tile294 = new Tile(Assets.tiles[294], 294, true);
+    public static Tile tile295 = new Tile(Assets.tiles[295], 295, true);
+    public static Tile tile316 = new Tile(Assets.tiles[316], 316, true);
+    public static Tile tile317 = new Tile(Assets.tiles[317], 317, true);
+
     //class
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
     protected BufferedImage texture;
@@ -198,6 +202,13 @@ public class Tile {
         this.texture = texture;
         this.id = id;
         this.isSolid = false;
+        tiles[id] = this;
+    }
+
+    public Tile(BufferedImage texture, int id, boolean l) {
+        this.texture = texture;
+        this.id = id;
+        this.isSolid = l;
         tiles[id] = this;
     }
 
