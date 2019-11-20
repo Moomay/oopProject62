@@ -125,6 +125,8 @@ public class Player extends Creature {
     private void getInput() {
         xMove = 0;
         yMove = 0;
+        float speed1 = (float) (speed*Math.sqrt(2)/2);
+        
         if (handler.getKeyManager().up ) {
             yMove = -speed;
         }
@@ -138,20 +140,21 @@ public class Player extends Creature {
             xMove = speed;
         }
         if (handler.getKeyManager().up && handler.getKeyManager().left) {
-            yMove = -speed/2;
-            xMove = -speed/2;
+            
+            yMove = -speed1;
+            xMove = -speed1;
         }
         if (handler.getKeyManager().up && handler.getKeyManager().right) {
-            yMove = -speed/2;
-            xMove = speed/2;
+            yMove = -speed1;
+            xMove = speed1;
         }
         if (handler.getKeyManager().down && handler.getKeyManager().left) {
-            yMove = speed/2;
-             xMove = -speed/2;
+            yMove = speed1;
+             xMove = -speed1;
         }
         if (handler.getKeyManager().down && handler.getKeyManager().right) {
-            yMove = speed/2;
-             xMove = speed/2;
+            yMove = speed1;
+             xMove = speed1;
         }
 
     }
