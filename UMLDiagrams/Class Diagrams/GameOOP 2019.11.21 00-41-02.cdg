@@ -44,7 +44,7 @@
         <Method name="init" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="Creature" package="GameOOP" visibility="public" isAbstract="true" xPosition="2620.0" yPosition="2204.0">
+    <Class name="Creature" package="GameOOP" visibility="public" isAbstract="true" xPosition="2813.0" yPosition="2179.0">
       <Fields>
         <Field name="speed" type="float" visibility="protected"/>
         <Field name="xMove" type="float" visibility="protected"/>
@@ -161,7 +161,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="EntityManager" package="GameOOP" visibility="public" xPosition="2221.0" yPosition="1815.0">
+    <Class name="EntityManager" package="GameOOP" visibility="public" xPosition="2310.0" yPosition="1864.0">
       <Fields>
         <Field name="handler" type="Handler" visibility="private"/>
         <Field name="player" type="Player" visibility="private"/>
@@ -196,7 +196,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GameCamera" package="GameOOP" visibility="public" xPosition="1089.0" yPosition="1703.0">
+    <Class name="GameCamera" package="GameOOP" visibility="public" xPosition="992.0" yPosition="1703.0">
       <Fields>
         <Field name="handler" type="Handler" visibility="private"/>
         <Field name="xOffset" type="float" visibility="private"/>
@@ -227,7 +227,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GameController" package="GameOOP" visibility="public" xPosition="710.0" yPosition="154.0">
+    <Class name="GameController" package="GameOOP" visibility="public" xPosition="802.0" yPosition="120.0">
       <Fields>
         <Field name="width" type="int" visibility="private"/>
         <Field name="height" type="int" visibility="private"/>
@@ -292,7 +292,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GameView" package="GameOOP" visibility="public" xPosition="340.0" yPosition="446.0">
+    <Class name="GameView" package="GameOOP" visibility="public" xPosition="373.0" yPosition="155.0">
       <Fields>
         <Field name="width" type="int" visibility="private"/>
         <Field name="f1" type="JFrame" visibility="private"/>
@@ -373,7 +373,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="Handler" package="GameOOP" visibility="public" xPosition="2258.0" yPosition="402.0">
+    <Class name="Handler" package="GameOOP" visibility="public" xPosition="2155.0" yPosition="343.0">
       <Fields>
         <Field name="game" type="GameController" visibility="private"/>
         <Field name="worlds" type="LinkedList&lt;World&gt;" visibility="private"/>
@@ -437,7 +437,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Item" package="GameOOP" visibility="public" xPosition="2828.0" yPosition="116.0">
+    <Class name="Item" package="GameOOP" visibility="public" xPosition="2842.0" yPosition="117.0">
       <Fields>
         <Field name="ITEMWIDTH" type="int" visibility="public" isStatic="true" isFinal="true"/>
         <Field name="item" type="Item[]" visibility="public" isStatic="true"/>
@@ -641,7 +641,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SpriteSheet" package="GameOOP" visibility="public" xPosition="91.0" yPosition="306.0">
+    <Class name="SpriteSheet" package="GameOOP" visibility="public" xPosition="642.0" yPosition="15.0">
       <Fields>
         <Field name="sheet" type="BufferedImage" visibility="private"/>
       </Fields>
@@ -694,7 +694,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Utils" package="GameOOP" visibility="public" xPosition="387.0" yPosition="54.0">
+    <Class name="Utils" package="GameOOP" visibility="public" xPosition="58.0" yPosition="675.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -721,7 +721,7 @@
         <Method name="isSolid" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="World" package="GameOOP" visibility="public" xPosition="1551.0" yPosition="697.0">
+    <Class name="World" package="GameOOP" visibility="public" xPosition="1959.0" yPosition="2372.0">
       <Fields>
         <Field name="handler" type="Handler" visibility="private"/>
         <Field name="width" type="int" visibility="private"/>
@@ -767,24 +767,16 @@
     <UseRelation source="GameOOP.Item" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.EntityManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.GameController" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.World" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.GameCamera" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.World" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="view" source="GameOOP.GameController" target="GameOOP.GameView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.GameView" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="items" source="GameOOP.ItemManager" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
     <HasRelation name="animNRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.KeyManager" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.World" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="game" source="GameOOP.Handler" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.Player" target="GameOOP.Creature"/>
-    <HasRelation name="k1" source="GameOOP.GameController" target="GameOOP.KeyManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.World" target="GameOOP.Tile 24-443" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="boxItem" source="GameOOP.Item" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.GameController" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="world1" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.GameController" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.Inventory" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="sheet" source="GameOOP.GameController" target="GameOOP.SpriteSheet" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.MouseManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
@@ -793,7 +785,6 @@
     <HasRelation name="handler" source="GameOOP.Item" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="worlds" source="GameOOP.Handler" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;World&gt;"/>
     <HasRelation name="animNDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.EntityManager" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="player" source="GameOOP.GameController" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="itemManager" source="GameOOP.GameController" target="GameOOP.ItemManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.DirtTile" target="GameOOP.Tile 24-443"/>
@@ -803,17 +794,14 @@
     <HasRelation name="animNLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="gameCamera" source="GameOOP.GameController" target="GameOOP.GameCamera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.Tree" target="GameOOP.StaticEntity"/>
-    <HasRelation name="world3" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="world2" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="world1-4" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.EntityManager" target="GameOOP.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="entities" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Entity&gt;"/>
     <HasRelation name="handler" source="GameOOP.GameCamera" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="renderSorter" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.GameController" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.ItemManager" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="world" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.Inventory" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animRight0" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.Creature" target="GameOOP.Entity"/>
     <HasRelation name="inventoryItems" source="GameOOP.Inventory" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
     <UseRelation source="GameOOP.Handler" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
@@ -821,11 +809,8 @@
     <IsRelation name="is" source="GameOOP.WatterTile" target="GameOOP.Tile 24-443"/>
     <HasRelation name="animTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="animNTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameController" target="GameOOP.KeyManager" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="tile24-443" source="GameOOP.Tile 24-443" target="GameOOP.Tile 24-443" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="animLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.Entity" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.Player" target="GameOOP.Inventory" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.GameController" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
@@ -837,6 +822,5 @@
     <HasRelation name="animRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="entityManager" source="GameOOP.GameController" target="GameOOP.EntityManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.Inventory" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.EntityManager" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
