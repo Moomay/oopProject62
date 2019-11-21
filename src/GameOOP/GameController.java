@@ -45,6 +45,7 @@ public class GameController implements Runnable {
     private World world1;
     private World world2;
     private World world3;
+    private World world4;
     private BufferStrategy bs;
     private Graphics g;
     //input
@@ -76,21 +77,24 @@ public class GameController implements Runnable {
         world1 = new World(handler, "world2.txt");
         world2 = new World(handler, "world3.txt");
         world3 = new World(handler, "world4.txt");
+        world4 = new World(handler, "world5.txt");
         gameCamera = new GameCamera(handler, 0, 0);
 
-        entityManager = new EntityManager(handler, new Player(handler, 500, 500));
+        entityManager = new EntityManager(handler, new Player(handler, 500, 400));
         itemManager = new ItemManager(handler);
-        entityManager.addEntity(new Tree(handler, 256, 256));
+        /*entityManager.addEntity(new Tree(handler, 256, 256));
         entityManager.addEntity(new Tree(handler, 150, 500));
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Rock(handler, 300, 230));
-        entityManager.addEntity(new Rock(handler, 450, 450));
+        entityManager.addEntity(new Rock(handler, 450, 450));*/
         itemManager.addItem(Item.boxItem.createNew(300, 300));
 
         handler.addWorld(world);
         handler.addWorld(world1);
         handler.addWorld(world2);
         handler.addWorld(world3);
+        handler.addWorld(world4);
+        
         m1 = new MouseManager(handler);
         view.getF1().addKeyListener(k1);
         view.getF1().addMouseListener(m1);
@@ -125,6 +129,7 @@ public class GameController implements Runnable {
         world1.render(g);
         world2.render(g);
         world3.render(g);
+        //world4.render(g);
         itemManager.render(g);
 
         entityManager.render(g);

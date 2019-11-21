@@ -34,12 +34,14 @@ public abstract class Creature extends Entity {
     }
 
     public void moveX() {
+        // ทำให้ตัวละครไม่ชน tile
         if (xMove > 0) {
+            
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
             if ((!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT))
                     && (!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))) {
                 x += xMove;
-                //System.out.println(x);
+               
             } else {
                 x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
             }
@@ -78,7 +80,7 @@ public abstract class Creature extends Entity {
     }
 
     protected boolean collisionWithTile(int x, int y) {
-        return (handler.getWorld(0).getTile(x, y).isSolid()||handler.getWorld(1).getTile(x, y).isSolid()||handler.getWorld(2).getTile(x, y).isSolid());
+        return (handler.getWorld(0).getTile(x, y).isSolid()||handler.getWorld(1).getTile(x, y).isSolid()||handler.getWorld(2).getTile(x, y).isSolid()||handler.getWorld(4).getTile(x, y).isSolid());
     }
 
     public float getxMove() {

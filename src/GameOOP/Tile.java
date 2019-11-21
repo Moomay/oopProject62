@@ -187,7 +187,7 @@ public class Tile {
     public static Tile tile295 = new Tile(Assets.tiles[295], 295, true);
     public static Tile tile316 = new Tile(Assets.tiles[316], 316, true);
     public static Tile tile317 = new Tile(Assets.tiles[317], 317, true);
-
+    public static Tile tile2 = new Tile(Assets.tiles[2], 2, true);
     //class
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
     protected BufferedImage texture;
