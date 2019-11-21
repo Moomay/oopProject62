@@ -28,9 +28,11 @@ public class Startgame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Word of the Death");
+        setIconImages(null);
         setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -42,12 +44,17 @@ public class Startgame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1280, 720);
+        jLabel2.setBounds(0, 0, 1318, 720);
+
+        jInternalFrame1.setVisible(true);
+        getContentPane().add(jInternalFrame1);
+        jInternalFrame1.setBounds(210, 110, 22, 34);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+
         GameController game = new GameController();
         game.start();
         this.setVisible(false);
@@ -90,6 +97,7 @@ public class Startgame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
