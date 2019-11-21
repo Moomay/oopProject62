@@ -19,10 +19,6 @@ public class Tile {
     public static Tile grassTile = new GrassTile(0);
     public static Tile dirtTile = new DirtTile(1);
     public static Tile watterTile = new WatterTile(2);
-    public static Tile grass24Tile = new Grass24Tile(24);
-    public static Tile grass25Tile = new Grass25Tile(25);
-    //public static Tile grass26Tile = new Grass26Tile(26);
-    public static Tile grass27Tile = new Grass27Tile(26);
     //public static Tile tile27 = new Tile(Assets.tiles[0], 0);
 
     public static Tile tile0 = new Tile(Assets.tiles[0], 0);
@@ -191,7 +187,7 @@ public class Tile {
     public static Tile tile295 = new Tile(Assets.tiles[295], 295, true);
     public static Tile tile316 = new Tile(Assets.tiles[316], 316, true);
     public static Tile tile317 = new Tile(Assets.tiles[317], 317, true);
-
+    public static Tile tile2 = new Tile(Assets.tiles[2], 2, true);
     //class
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
     protected BufferedImage texture;

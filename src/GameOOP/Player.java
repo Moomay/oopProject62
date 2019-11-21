@@ -75,7 +75,7 @@ public class Player extends Creature {
         move();
         handler.getGameCamera().centerOnEntity(this);
         //atk
-        checkAttacks();
+        //checkAttacks();
         //inventory
         inventory.tick();
         
@@ -83,7 +83,7 @@ public class Player extends Creature {
     }
    
    
-    
+    /*
     public void checkAttacks() {
         Rectangle cb = getCollisionBounds(0, 0);
         Rectangle ar = new Rectangle();
@@ -116,7 +116,7 @@ public class Player extends Creature {
             }
         }
 
-    }
+    }*/
 
     public void die() {
         System.out.println("U lose");
