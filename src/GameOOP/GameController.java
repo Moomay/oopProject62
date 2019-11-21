@@ -128,8 +128,8 @@ public class GameController implements Runnable {
         itemManager.render(g);
 
         entityManager.render(g);
-
-        g.setColor(Color.red);
+        Text.drawString(g, "น้องปืน", 640, 300, true, Color.pink, Assets.font28);
+        //g.setColor(Color.red);
         //g.fillRect(10, 10, 50, 200);
         //System.out.println(entityManager.getPlayer().x - handler.getGameCamera().getxOffset() + "   " + (entityManager.getPlayer().y - handler.getGameCamera().getyOffset()));
         /*g.setColor(Color.red);
