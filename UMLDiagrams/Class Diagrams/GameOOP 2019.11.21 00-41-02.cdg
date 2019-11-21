@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="GameOOP">
+  <ClassDiagramComponents>
+    <Class name="Animation" package="GameOOP" visibility="public" xPosition="3258.0" yPosition="1705.0">
+      <Fields>
+        <Field name="speed" type="int" visibility="private"/>
+        <Field name="frames" type="BufferedImage[]" visibility="private"/>
+        <Field name="lastTime" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="speed"/>
+          <Argument type="BufferedImage[]" name="frames"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="getCurrentFrame" returnType="BufferedImage" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Assets" package="GameOOP" visibility="public" xPosition="-557.0" yPosition="2361.0">
+      <Fields>
+        <Field name="tileW" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="width" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="player" type="BufferedImage" visibility="public" isStatic="true"/>
+        <Field name="player_right" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="player_left" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="player_top" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="player_down" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="player_right0" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="btn_start" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="player_idle" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="playerNew_idle" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="playerNew_top" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="playerNew_down" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="playerNew_left" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="playerNew_right" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="tiles" type="BufferedImage[]" visibility="public" isStatic="true"/>
+        <Field name="inventory" type="BufferedImage" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Creature" package="GameOOP" visibility="public" isAbstract="true" xPosition="2620.0" yPosition="2204.0">
+      <Fields>
+        <Field name="speed" type="float" visibility="protected"/>
+        <Field name="xMove" type="float" visibility="protected"/>
+        <Field name="DEFAULT_SPEED" type="float" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="move" returnType="void" visibility="public"/>
+        <Method name="moveX" returnType="void" visibility="public"/>
+        <Method name="moveY" returnType="void" visibility="public"/>
+        <Method name="collisionWithTile" returnType="int" visibility="protected">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="getxMove" returnType="float" visibility="public"/>
+        <Method name="setxMove" returnType="float" visibility="public">
+          <Argument type="float" name="xMove"/>
+        </Method>
+        <Method name="getyMove" returnType="float" visibility="public"/>
+        <Method name="setyMove" returnType="float" visibility="public">
+          <Argument type="float" name="yMove"/>
+        </Method>
+        <Method name="getHealth" returnType="int" visibility="public"/>
+        <Method name="setHealth" returnType="int" visibility="public">
+          <Argument type="int" name="health"/>
+        </Method>
+        <Method name="getSpeed" returnType="float" visibility="public"/>
+        <Method name="setSpeed" returnType="float" visibility="public">
+          <Argument type="float" name="speed"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DirtTile" package="GameOOP" visibility="public" xPosition="913.0" yPosition="2552.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="BufferedImage" name="texture"/>
+          <Argument type="int" name="id"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Entity" package="GameOOP" visibility="public" isAbstract="true" xPosition="538.0" yPosition="1748.0">
+      <Fields>
+        <Field name="DEFAULT_HEALTH" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="handler" type="Handler" visibility="protected"/>
+        <Field name="game" type="GameController" visibility="protected"/>
+        <Field name="x" type="float" visibility="protected"/>
+        <Field name="width" type="float" visibility="protected"/>
+        <Field name="bounds" type="Rectangle" visibility="protected"/>
+        <Field name="active" type="boolean" visibility="protected"/>
+        <Field name="health" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="checkEntityCollisions" returnType="float" visibility="public">
+          <Argument type="float" name="xOffset"/>
+          <Argument type="float" name="yOffset"/>
+        </Method>
+        <Method name="getCollisionBounds" returnType="float" visibility="public">
+          <Argument type="float" name="xOffset"/>
+          <Argument type="float" name="yOffset"/>
+        </Method>
+        <Method name="hurt" returnType="int" visibility="public">
+          <Argument type="int" name="amt"/>
+        </Method>
+        <Method name="die" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="getX" returnType="float" visibility="public"/>
+        <Method name="setX" returnType="float" visibility="public">
+          <Argument type="float" name="x"/>
+        </Method>
+        <Method name="getY" returnType="float" visibility="public"/>
+        <Method name="setY" returnType="float" visibility="public">
+          <Argument type="float" name="y"/>
+        </Method>
+        <Method name="getWidth" returnType="float" visibility="public"/>
+        <Method name="setWidth" returnType="float" visibility="public">
+          <Argument type="float" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="float" visibility="public"/>
+        <Method name="setHeight" returnType="float" visibility="public">
+          <Argument type="float" name="height"/>
+        </Method>
+        <Method name="isActive" returnType="boolean" visibility="public"/>
+        <Method name="setActive" returnType="boolean" visibility="public">
+          <Argument type="boolean" name="active"/>
+        </Method>
+        <Method name="getHealth" returnType="int" visibility="public"/>
+        <Method name="setHealth" returnType="int" visibility="public">
+          <Argument type="int" name="health"/>
+        </Method>
+        <Method name="tick" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="render" returnType="Graphics" visibility="public" isAbstract="true">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EntityManager" package="GameOOP" visibility="public" xPosition="2221.0" yPosition="1815.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="player" type="Player" visibility="private"/>
+        <Field name="entities" type="ArrayList&lt;Entity&gt;" visibility="private"/>
+        <Field name="renderSorter" type="Comparator&lt;Entity&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="Player" name="player"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="addEntity" returnType="Entity" visibility="public">
+          <Argument type="Entity" name="e"/>
+        </Method>
+        <Method name="getHandler" returnType="Handler" visibility="public"/>
+        <Method name="setHandler" returnType="Handler" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+        <Method name="getPlayer" returnType="Player" visibility="public"/>
+        <Method name="setPlayer" returnType="Player" visibility="public">
+          <Argument type="Player" name="player"/>
+        </Method>
+        <Method name="getEntities" returnType="ArrayList&lt;Entity&gt;" visibility="public"/>
+        <Method name="setEntities" returnType="ArrayList&lt;Entity&gt;" visibility="public">
+          <Argument type="ArrayList&lt;Entity&gt;" name="entities"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GameCamera" package="GameOOP" visibility="public" xPosition="1089.0" yPosition="1703.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="xOffset" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="xOffset"/>
+          <Argument type="float" name="yOffset"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="checkBlankSpace" returnType="void" visibility="public"/>
+        <Method name="centerOnEntity" returnType="Entity" visibility="public">
+          <Argument type="Entity" name="e"/>
+        </Method>
+        <Method name="move" returnType="float" visibility="public">
+          <Argument type="float" name="xAmt"/>
+          <Argument type="float" name="yAmt"/>
+        </Method>
+        <Method name="getxOffset" returnType="float" visibility="public"/>
+        <Method name="setxOffset" returnType="float" visibility="public">
+          <Argument type="float" name="xOffset"/>
+        </Method>
+        <Method name="getyOffset" returnType="float" visibility="public"/>
+        <Method name="setyOffset" returnType="float" visibility="public">
+          <Argument type="float" name="yOffset"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GameController" package="GameOOP" visibility="public" xPosition="710.0" yPosition="154.0">
+      <Fields>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+        <Field name="testImage" type="BufferedImage" visibility="private"/>
+        <Field name="view" type="GameView" visibility="private"/>
+        <Field name="i" type="ImageIcon" visibility="private"/>
+        <Field name="img" type="Image" visibility="private"/>
+        <Field name="sheet" type="SpriteSheet" visibility="private"/>
+        <Field name="thread0" type="Thread" visibility="private"/>
+        <Field name="running" type="boolean" visibility="private"/>
+        <Field name="world" type="World" visibility="private"/>
+        <Field name="world1" type="World" visibility="private"/>
+        <Field name="world2" type="World" visibility="private"/>
+        <Field name="world3" type="World" visibility="private"/>
+        <Field name="bs" type="BufferStrategy" visibility="private"/>
+        <Field name="g" type="Graphics" visibility="private"/>
+        <Field name="k1" type="KeyManager" visibility="private"/>
+        <Field name="m1" type="MouseManager" visibility="private"/>
+        <Field name="gameCamera" type="GameCamera" visibility="private"/>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="player" type="Player" visibility="private"/>
+        <Field name="entityManager" type="EntityManager" visibility="private"/>
+        <Field name="itemManager" type="ItemManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="package"/>
+        <Method name="tick" returnType="void" visibility="private"/>
+        <Method name="render" returnType="void" visibility="private"/>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="int" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="int" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="getView" returnType="GameView" visibility="public"/>
+        <Method name="start" returnType="void" visibility="public" isSynchronized="true"/>
+        <Method name="stop" returnType="void" visibility="public" isSynchronized="true"/>
+        <Method name="main" returnType="String[]" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="getK1" returnType="KeyManager" visibility="public"/>
+        <Method name="setK1" returnType="KeyManager" visibility="public">
+          <Argument type="KeyManager" name="k1"/>
+        </Method>
+        <Method name="getM1" returnType="MouseManager" visibility="public"/>
+        <Method name="setM1" returnType="MouseManager" visibility="public">
+          <Argument type="MouseManager" name="m1"/>
+        </Method>
+        <Method name="getGameCamera" returnType="GameCamera" visibility="public"/>
+        <Method name="setGameCamera" returnType="GameCamera" visibility="public">
+          <Argument type="GameCamera" name="gameCamera"/>
+        </Method>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="setEntityManager" returnType="EntityManager" visibility="public">
+          <Argument type="EntityManager" name="entityManager"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GameView" package="GameOOP" visibility="public" xPosition="340.0" yPosition="446.0">
+      <Fields>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="f1" type="JFrame" visibility="private"/>
+        <Field name="c1" type="Canvas" visibility="private"/>
+        <Field name="mb1" type="JMenuBar" visibility="private"/>
+        <Field name="m1" type="JMenu" visibility="private"/>
+        <Field name="mi1" type="JMenuItem" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getC1" returnType="Canvas" visibility="public"/>
+        <Method name="setC1" returnType="Canvas" visibility="public">
+          <Argument type="Canvas" name="c1"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="int" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="int" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="getF1" returnType="JFrame" visibility="public"/>
+        <Method name="setF1" returnType="JFrame" visibility="public">
+          <Argument type="JFrame" name="f1"/>
+        </Method>
+        <Method name="getMb1" returnType="JMenuBar" visibility="public"/>
+        <Method name="setMb1" returnType="JMenuBar" visibility="public">
+          <Argument type="JMenuBar" name="mb1"/>
+        </Method>
+        <Method name="getM1" returnType="JMenu" visibility="public"/>
+        <Method name="setM1" returnType="JMenu" visibility="public">
+          <Argument type="JMenu" name="m1"/>
+        </Method>
+        <Method name="getM2" returnType="JMenu" visibility="public"/>
+        <Method name="setM2" returnType="JMenu" visibility="public">
+          <Argument type="JMenu" name="m2"/>
+        </Method>
+        <Method name="getMi1" returnType="JMenuItem" visibility="public"/>
+        <Method name="setMi1" returnType="JMenuItem" visibility="public">
+          <Argument type="JMenuItem" name="mi1"/>
+        </Method>
+        <Method name="getMi2" returnType="JMenuItem" visibility="public"/>
+        <Method name="setMi2" returnType="JMenuItem" visibility="public">
+          <Argument type="JMenuItem" name="mi2"/>
+        </Method>
+        <Method name="getMi3" returnType="JMenuItem" visibility="public"/>
+        <Method name="setMi3" returnType="JMenuItem" visibility="public">
+          <Argument type="JMenuItem" name="mi3"/>
+        </Method>
+        <Method name="getMi4" returnType="JMenuItem" visibility="public"/>
+        <Method name="setMi4" returnType="JMenuItem" visibility="public">
+          <Argument type="JMenuItem" name="mi4"/>
+        </Method>
+        <Method name="getMi5" returnType="JMenuItem" visibility="public"/>
+        <Method name="setMi5" returnType="JMenuItem" visibility="public">
+          <Argument type="JMenuItem" name="mi5"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GrassTile" package="GameOOP" visibility="public" xPosition="1639.0" yPosition="2534.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="BufferedImage" name="texture"/>
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Handler" package="GameOOP" visibility="public" xPosition="2258.0" yPosition="402.0">
+      <Fields>
+        <Field name="game" type="GameController" visibility="private"/>
+        <Field name="worlds" type="LinkedList&lt;World&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="GameController" name="game"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="GameController" name="game"/>
+          <Argument type="World" name="world"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getGameCamera" returnType="GameCamera" visibility="public"/>
+        <Method name="getKeyManager" returnType="KeyManager" visibility="public"/>
+        <Method name="getMouseManager" returnType="MouseManager" visibility="public"/>
+        <Method name="getView" returnType="GameView" visibility="public"/>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="addWorld" returnType="World" visibility="public">
+          <Argument type="World" name="world"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="getGame" returnType="GameController" visibility="public"/>
+        <Method name="setGame" returnType="GameController" visibility="public">
+          <Argument type="GameController" name="game"/>
+        </Method>
+        <Method name="getWorld" returnType="int" visibility="public">
+          <Argument type="int" name="i"/>
+        </Method>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Inventory" package="GameOOP" visibility="public" xPosition="2874.0" yPosition="1177.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="active" type="boolean" visibility="private"/>
+        <Field name="inventoryItems" type="ArrayList&lt;Item&gt;" visibility="private"/>
+        <Field name="inX" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="package"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="getHandler" returnType="Handler" visibility="public"/>
+        <Method name="setHandler" returnType="Handler" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+        <Method name="isActive" returnType="boolean" visibility="public"/>
+        <Method name="setActive" returnType="boolean" visibility="public">
+          <Argument type="boolean" name="active"/>
+        </Method>
+        <Method name="addItem" returnType="Item" visibility="public">
+          <Argument type="Item" name="item"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Item" package="GameOOP" visibility="public" xPosition="2828.0" yPosition="116.0">
+      <Fields>
+        <Field name="ITEMWIDTH" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="item" type="Item[]" visibility="public" isStatic="true"/>
+        <Field name="boxItem" type="Item" visibility="public" isStatic="true"/>
+        <Field name="handler" type="Handler" visibility="protected"/>
+        <Field name="texture" type="BufferedImage" visibility="protected"/>
+        <Field name="name" type="String" visibility="protected"/>
+        <Field name="id" type="int" visibility="protected" isFinal="true"/>
+        <Field name="bounds" type="Rectangle" visibility="protected"/>
+        <Field name="x" type="int" visibility="protected"/>
+        <Field name="pickedUp" type="boolean" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="BufferedImage" name="texture"/>
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="render" returnType="int" visibility="public">
+          <Argument type="Graphics" name="g"/>
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="createNew" returnType="int" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setPosition" returnType="int" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setHandler" returnType="Handler" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+        <Method name="setTexture" returnType="BufferedImage" visibility="public">
+          <Argument type="BufferedImage" name="texture"/>
+        </Method>
+        <Method name="setName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setX" returnType="int" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="setY" returnType="int" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setCount" returnType="int" visibility="public">
+          <Argument type="int" name="count"/>
+        </Method>
+        <Method name="getCount" returnType="int" visibility="public"/>
+        <Method name="isPickedUp" returnType="boolean" visibility="public"/>
+        <Method name="getId" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ItemManager" package="GameOOP" visibility="public" xPosition="3269.0" yPosition="887.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="items" type="ArrayList&lt;Item&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="addItem" returnType="Item" visibility="public">
+          <Argument type="Item" name="i"/>
+        </Method>
+        <Method name="getHandler" returnType="Handler" visibility="public"/>
+        <Method name="setHandler" returnType="Handler" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="KeyManager" package="GameOOP" visibility="public" xPosition="1639.0" yPosition="1703.0">
+      <Fields>
+        <Field name="keys" type="boolean[]" visibility="private"/>
+        <Field name="up" type="boolean" visibility="public"/>
+        <Field name="aUp" type="boolean" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="keyTyped" returnType="KeyEvent" visibility="public">
+          <Argument type="KeyEvent" name="ke"/>
+        </Method>
+        <Method name="keyPressed" returnType="KeyEvent" visibility="public">
+          <Argument type="KeyEvent" name="ke"/>
+        </Method>
+        <Method name="keyReleased" returnType="KeyEvent" visibility="public">
+          <Argument type="KeyEvent" name="ke"/>
+        </Method>
+        <Method name="keyJustPressed" returnType="int" visibility="public">
+          <Argument type="int" name="keyCode"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MouseManager" package="GameOOP" visibility="public" xPosition="1540.0" yPosition="8.0">
+      <Fields>
+        <Field name="leftPressed" type="boolean" visibility="private"/>
+        <Field name="mouseX" type="int" visibility="private"/>
+        <Field name="handler" type="Handler" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isLeftPressed" returnType="boolean" visibility="public"/>
+        <Method name="isRightPressed" returnType="boolean" visibility="public"/>
+        <Method name="getMouseX" returnType="int" visibility="public"/>
+        <Method name="getMouseY" returnType="int" visibility="public"/>
+        <Method name="mouseClicked" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mousePressed" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseReleased" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseEntered" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseExited" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseDragged" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseMoved" returnType="MouseEvent" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Player" package="GameOOP" visibility="public" xPosition="2856.0" yPosition="1589.0">
+      <Fields>
+        <Field name="animRight" type="Animation" visibility="private"/>
+        <Field name="animRight0" type="Animation" visibility="private"/>
+        <Field name="animLeft" type="Animation" visibility="private"/>
+        <Field name="animDown" type="Animation" visibility="private"/>
+        <Field name="animTop" type="Animation" visibility="private"/>
+        <Field name="animNRight" type="Animation" visibility="private"/>
+        <Field name="animNLeft" type="Animation" visibility="private"/>
+        <Field name="animNDown" type="Animation" visibility="private"/>
+        <Field name="animNTop" type="Animation" visibility="private"/>
+        <Field name="idle" type="BufferedImage[]" visibility="private"/>
+        <Field name="stage" type="int" visibility="private"/>
+        <Field name="hovering" type="boolean" visibility="private"/>
+        <Field name="inventory" type="Inventory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="checkAttacks" returnType="void" visibility="public"/>
+        <Method name="die" returnType="void" visibility="public"/>
+        <Method name="getInput" returnType="void" visibility="private"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="postRender" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="getCurrentAnimationFrame" returnType="BufferedImage" visibility="private"/>
+        <Method name="getInventory" returnType="Inventory" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Rock" package="GameOOP" visibility="public" xPosition="2.0" yPosition="2248.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="die" returnType="void" visibility="public"/>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SpriteSheet" package="GameOOP" visibility="public" xPosition="91.0" yPosition="306.0">
+      <Fields>
+        <Field name="sheet" type="BufferedImage" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="BufferedImage" name="sheet"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="crop" returnType="int" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StaticEntity" package="GameOOP" visibility="public" isAbstract="true" xPosition="2.0" yPosition="2029.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Tile 24-443" package="GameOOP" visibility="public" xPosition="1325.0" yPosition="2570.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Tree" package="GameOOP" visibility="public" xPosition="237.0" yPosition="2248.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="die" returnType="void" visibility="public"/>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Utils" package="GameOOP" visibility="public" xPosition="387.0" yPosition="54.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="loadFileAsString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="parseInt" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="number"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="WatterTile" package="GameOOP" visibility="public" xPosition="1291.0" yPosition="2777.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="BufferedImage" name="texture"/>
+          <Argument type="int" name="id"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isSolid" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="World" package="GameOOP" visibility="public" xPosition="1551.0" yPosition="697.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private"/>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="tiles" type="int[][]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="Graphics" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="getTile" returnType="int" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="loadWorld" returnType="String" visibility="private">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="getHandler" returnType="Handler" visibility="public"/>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+        <Method name="untitledMethod1" returnType="void" visibility="public"/>
+        <Method name="untitledMethod2" returnType="void" visibility="public"/>
+        <Method name="untitledMethod3" returnType="void" visibility="public"/>
+        <Method name="untitledMethod4" returnType="void" visibility="public"/>
+        <Method name="untitledMethod5" returnType="void" visibility="public"/>
+        <Method name="untitledMethod6" returnType="void" visibility="public"/>
+        <Method name="untitledMethod7" returnType="void" visibility="public"/>
+        <Method name="untitledMethod8" returnType="void" visibility="public"/>
+        <Method name="untitledMethod9" returnType="void" visibility="public"/>
+        <Method name="untitledMethod10" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="GameOOP.Rock" target="GameOOP.StaticEntity"/>
+    <UseRelation source="GameOOP.Item" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.EntityManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.World" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameCamera" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.World" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="view" source="GameOOP.GameController" target="GameOOP.GameView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameView" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="GameOOP.ItemManager" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
+    <HasRelation name="animNRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.KeyManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.World" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="game" source="GameOOP.Handler" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Player" target="GameOOP.Creature"/>
+    <HasRelation name="k1" source="GameOOP.GameController" target="GameOOP.KeyManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.World" target="GameOOP.Tile 24-443" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="boxItem" source="GameOOP.Item" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="world1" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.GameController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Inventory" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sheet" source="GameOOP.GameController" target="GameOOP.SpriteSheet" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.MouseManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.ItemManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.GrassTile" target="GameOOP.Tile 24-443"/>
+    <HasRelation name="handler" source="GameOOP.Item" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="worlds" source="GameOOP.Handler" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;World&gt;"/>
+    <HasRelation name="animNDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.EntityManager" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player" source="GameOOP.GameController" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="itemManager" source="GameOOP.GameController" target="GameOOP.ItemManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.DirtTile" target="GameOOP.Tile 24-443"/>
+    <UseRelation source="GameOOP.Item" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player" source="GameOOP.EntityManager" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="m1" source="GameOOP.GameController" target="GameOOP.MouseManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animNLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gameCamera" source="GameOOP.GameController" target="GameOOP.GameCamera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Tree" target="GameOOP.StaticEntity"/>
+    <HasRelation name="world3" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="world2" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.EntityManager" target="GameOOP.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="entities" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Entity&gt;"/>
+    <HasRelation name="handler" source="GameOOP.GameCamera" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="renderSorter" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.GameController" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="world" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Inventory" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animRight0" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Creature" target="GameOOP.Entity"/>
+    <HasRelation name="inventoryItems" source="GameOOP.Inventory" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.WatterTile" target="GameOOP.Tile 24-443"/>
+    <HasRelation name="animTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animNTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.KeyManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tile24-443" source="GameOOP.Tile 24-443" target="GameOOP.Tile 24-443" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.Entity" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Player" target="GameOOP.Inventory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.StaticEntity" target="GameOOP.Entity"/>
+    <HasRelation name="game" source="GameOOP.Entity" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="inventory" source="GameOOP.Player" target="GameOOP.Inventory" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="entityManager" source="GameOOP.GameController" target="GameOOP.EntityManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.Inventory" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.EntityManager" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
