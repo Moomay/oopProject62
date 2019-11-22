@@ -68,13 +68,14 @@ public class GameController implements Runnable {
     private UIbotton reset;
 
     private UIManager uiManager;
-    private boolean UIvisible = true;
+    private boolean UIvisible = false;
     private String sum = "";
     private int score = 0;
     private String word = "EA";
     private String[] choice;
+    private String  c = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private String[] hint;
-    
+    private String h1,h2,h3;
     public GameController() {
 
     }
@@ -92,25 +93,41 @@ public class GameController implements Runnable {
         world2 = new World(handler, "world3.txt");
         world3 = new World(handler, "world4.txt");
         world4 = new World(handler, "world5.txt");
-        choice = new String[14];
+        choice = new String[26];
         hint = new String[3];
         hint[0] = "อะไรว่ะ";
         hint[1] = "งงcode";
         hint[2] = "ลาก่อน";
+        
         choice[0] = "A";
         choice[1] = "B";
         choice[2] = "C";
         choice[3] = "D";
         choice[4] = "E";
         choice[5] = "F";
-        choice[6] = "I";
-        choice[7] = "J";
-        choice[8] = "K";
-        choice[9] = "L";
-        choice[10] = "M";
-        choice[11] = "N";
-        choice[12] = "G";
-        choice[13] = "P";
+        choice[6] = "G";
+        choice[7] = "H";
+        choice[8] = "I";
+        choice[9] = "J";
+        choice[10] = "K";
+        choice[11] = "L";
+        choice[12] = "M";
+        choice[13] = "N";
+        choice[14] = "O";
+        choice[15] = "P";
+        choice[16] = "Q";
+        choice[17] = "R";
+        choice[18] = "S";
+        choice[19] = "T";
+        choice[20] = "U";
+        choice[21] = "V";
+        choice[22] = "W";
+        choice[23] = "X";
+        choice[24] = "Y";
+        choice[25] = "Z";
+        h1 = hint[0];
+        h2 = hint[1];
+        h3 = hint[2];
         
         //reset = new UIbotton()
         gameCamera = new GameCamera(handler, 0, 0);
@@ -142,6 +159,7 @@ public class GameController implements Runnable {
                 if (word.equals(sum)) {
                     System.out.println("win");
                 }
+                System.out.println(word);
             }
         }));
         uiManager.addObject(new UIbotton("Set", 1010, 600, 64, 64, new ClickListener() {
@@ -158,37 +176,37 @@ public class GameController implements Runnable {
             }
         }));
 
-        uiManager.addObject(new UIbotton(choice[1], 200, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[1], 120, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[1];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[2], 360, 280, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[2], 200, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[2];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[3], 520, 280, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[3], 280, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[3];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[4], 680, 280, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[4], 360, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[4];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[5], 840, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[5], 440, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[5];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[6], 1000, 280, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[6], 520, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[6];
@@ -196,49 +214,122 @@ public class GameController implements Runnable {
         }));
         //row 2;
         
-        uiManager.addObject(new UIbotton(choice[7], 40, 360, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[7], 600, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[7];
             }
         }));
 
-        uiManager.addObject(new UIbotton(choice[8], 200, 360, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[8], 680, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[8];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[9], 360, 360, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[9], 760, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[9];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[10], 520, 360, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[10], 840, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[10];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[11], 680, 360, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[11], 920, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[11];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[12], 840, 360, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[12], 1000, 280, 64, 64,  new ClickListener() {
 
             public void onClick() {
                 sum += choice[12];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[13], 1000, 360, 64, 64, new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[13], 40, 360, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[13];
             }
         }));
+        uiManager.addObject(new UIbotton(choice[14], 120, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[14];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[15], 200, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[15];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[16], 280, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[16];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[17], 360, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[17];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[18], 440, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[18];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[19], 520, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[19];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[20], 600, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[20];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[21], 680, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[21];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[22], 760, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[22];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[23], 840, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[23];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[24], 920, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[24];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[25], 1000, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[25];
+            }
+        }));
+        
         
         handler.addWorld(world);
         handler.addWorld(world1);
@@ -288,11 +379,11 @@ public class GameController implements Runnable {
         itemManager.render(g);
         entityManager.render(g);
         if (UIvisible) {
-            //g.drawImage(Assets.inventory, 20, 140, 1240, 500, null);
-            Text.drawString(g, sum, 500, 200, true, Color.black, Assets.font28);
-            Text.drawString(g, hint[0], 500, 480, true, Color.black, Assets.font28);
-            Text.drawString(g, hint[1], 500, 520, true, Color.black, Assets.font28);
-            Text.drawString(g, hint[2], 500, 560, true, Color.black, Assets.font28);
+            g.drawImage(Assets.inventory, 20, 140, 1240, 580, null);
+            Text.drawString(g, sum, 500, 220, true, Color.black, Assets.font28);
+            Text.drawString(g, h1, 500, 580, true, Color.black, Assets.font28);
+            Text.drawString(g, h2, 500, 620, true, Color.black, Assets.font28);
+            Text.drawString(g, h3, 500, 660, true, Color.black, Assets.font28);
             uiManager.render(g);
         }
 
@@ -445,9 +536,13 @@ public class GameController implements Runnable {
         this.hint = hint;
     }
     public void setHint(String h1,String h2,String h3){
-        hint[0] = h1;
-        hint[1] = h2;
-        hint[2] = h3;
+        this.h1 = h1;
+        this.h2 = h2;
+        this.h3 = h3;
+    }
+
+    public void setUIvisible(boolean UIvisible) {
+        this.UIvisible = UIvisible;
     }
     
 }

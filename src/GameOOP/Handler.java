@@ -81,7 +81,10 @@ public class Handler {
         game.setWord(word);
     }
     public void setHint(String h1, String h2, String h3){
-    
+        game.setHint(h1, h2, h3);
+    }
+    public void setUIvisible(boolean l){
+        game.setUIvisible(l);
     }
 
 }

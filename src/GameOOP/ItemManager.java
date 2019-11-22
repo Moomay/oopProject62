@@ -29,7 +29,7 @@ public class ItemManager {
             if (i.isPickedUp()){
                handler.setWord(i.getWord().getWordString());
                handler.setHint(i.getWord().getHint1(), i.getWord().getHint2(), i.getWord().getHint3());
-               
+               handler.setUIvisible(true);
                it.remove();
             }
         }

@@ -10,7 +10,7 @@ package GameOOP;
  * @author Jame
  */
 public class Word {
-    public static Word w1 = new Word("abc", "บินได้", "ทดสอบ", "ทดสอบ", 0);
+    public static Word w1 = new Word("ABC", "บินได้", "ทดสอบ", "ทดสอบ", 0);
     private String hint1;
     private String hint2;
     private String hint3;
