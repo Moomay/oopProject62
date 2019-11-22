@@ -7,10 +7,7 @@ package GameOOP;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Jame
- */
+
 public class Animation {
 
     private int speed, index;

@@ -8,10 +8,7 @@ package GameOOP;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-/**
- *
- * @author Jame
- */
+
 public class KeyManager implements KeyListener {
 
     private boolean[] keys, justPressed, cantPress;

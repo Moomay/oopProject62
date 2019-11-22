@@ -5,15 +5,8 @@
  */
 package GameOOP;
 
-/**
- *
- * @author Jame
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -26,10 +19,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import oopproject62.UIObject;
 
-/**
- *
- * @author Jame
- */
+
 public class GameController implements Runnable {
 
     //set up screen

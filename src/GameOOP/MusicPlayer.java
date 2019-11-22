@@ -14,10 +14,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 
-/**
- *
- * @author 61070231
- */
+
 public class MusicPlayer implements Runnable {
 
     private ArrayList<String> musicFiles;

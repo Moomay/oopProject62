@@ -5,10 +5,7 @@
  */
 package GameOOP;
 
-/**
- *
- * @author Jame
- */
+
 public abstract class Creature extends Entity {
 
     

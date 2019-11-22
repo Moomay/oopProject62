@@ -9,10 +9,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- *
- * @author Jame
- */
+
 public class ItemManager {
     private Handler handler;
     private ArrayList<Item> items;

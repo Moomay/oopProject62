@@ -5,10 +5,7 @@
  */
 package GameOOP;
 
-/**
- *
- * @author Jame
- */
+
 public class GameCamera {
     private Handler handler;
     private float xOffset, yOffset;

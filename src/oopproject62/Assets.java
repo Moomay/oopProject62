@@ -5,6 +5,7 @@
  */
 package oopproject62;
 
+import GameOOP.ImageLoader;
 import java.awt.image.BufferedImage;
 
 /**

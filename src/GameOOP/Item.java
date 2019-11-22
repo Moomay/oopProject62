@@ -9,10 +9,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Jame
- */
 public class Item {
 
     public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
