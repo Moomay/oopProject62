@@ -18,7 +18,7 @@ public class Assets {
 
     public static final int tileW = 16, tileH = 16;
     public static final int width = 24, height = 24;
-    public static BufferedImage player, dirt, grass, water, tree, rock, box;
+    public static BufferedImage player, dirt, grass, water, tree, rock, box,uiB,uiH;
     public static BufferedImage[] player_right;
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_top;
@@ -146,6 +146,7 @@ public class Assets {
                 tiles[22*y + x+1] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);
             }
         }
-
+        uiB = ImageLoader.loadImage("uiB.png");
+        uiH = ImageLoader.loadImage("UiC1.png");
     }
 }

@@ -17,21 +17,23 @@ public class Item {
 
     public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
     public static Item[] item = new Item[256];
-    public static Item boxItem = new Item(Assets.box, "box", 0);
+    public static Item boxItem = new Item(Assets.box, "box", Word.w1);
     
     protected Handler handler;
     protected BufferedImage texture;
     protected String name;
-    protected final int id;
+    //protected final int id;
     
     protected Rectangle bounds;
     protected int x, y, count;
-    
+    private String [] hint;
+    private String [] setofword;
+    private Word word;
     protected boolean pickedUp = false;
-    public Item(BufferedImage texture, String name, int id) {
+    public Item(BufferedImage texture, String name,Word word) {
         this.texture = texture;
         this.name = name;
-        this.id = id;
+        this.word = word;
         count = 1;
         bounds = new Rectangle(x,y,ITEMWIDTH, ITEMHEIGHT);
     }
@@ -39,7 +41,7 @@ public class Item {
     public void tick() {
         if (handler.getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
             pickedUp = true;
-            handler.getEntityManager().getPlayer().getInventory().addItem(this);
+            //handler.getEntityManager().getPlayer().getInventory().addItem(this);
         }
     }
 
@@ -54,7 +56,7 @@ public class Item {
         g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT, null);
     }
     public Item createNew(int x,int y){
-        Item i = new Item(texture, name, id);
+        Item i = new Item(texture, name, word);
         i.setPosition(x,y);
         return i;
     }
@@ -96,9 +98,11 @@ public class Item {
         return pickedUp;
     }
 
-    public int getId() {
-        return id;
+    public Word getWord() {
+        return word;
     }
+
+    
 
     
     

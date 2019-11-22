@@ -14,6 +14,7 @@ package GameOOP;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -21,7 +22,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import oopproject62.UIObject;
 
 /**
  *
@@ -61,6 +64,17 @@ public class GameController implements Runnable {
     private EntityManager entityManager;
     private ItemManager itemManager;
 
+    private ArrayList<UIObject> objects;
+    private UIbotton reset;
+
+    private UIManager uiManager;
+    private boolean UIvisible = true;
+    private String sum = "";
+    private int score = 0;
+    private String word = "EA";
+    private String[] choice;
+    private String[] hint;
+    
     public GameController() {
 
     }
@@ -78,6 +92,27 @@ public class GameController implements Runnable {
         world2 = new World(handler, "world3.txt");
         world3 = new World(handler, "world4.txt");
         world4 = new World(handler, "world5.txt");
+        choice = new String[14];
+        hint = new String[3];
+        hint[0] = "อะไรว่ะ";
+        hint[1] = "งงcode";
+        hint[2] = "ลาก่อน";
+        choice[0] = "A";
+        choice[1] = "B";
+        choice[2] = "C";
+        choice[3] = "D";
+        choice[4] = "E";
+        choice[5] = "F";
+        choice[6] = "I";
+        choice[7] = "J";
+        choice[8] = "K";
+        choice[9] = "L";
+        choice[10] = "M";
+        choice[11] = "N";
+        choice[12] = "G";
+        choice[13] = "P";
+        
+        //reset = new UIbotton()
         gameCamera = new GameCamera(handler, 0, 0);
 
         entityManager = new EntityManager(handler, new Player(handler, 500, 400));
@@ -89,13 +124,130 @@ public class GameController implements Runnable {
         entityManager.addEntity(new Rock(handler, 450, 450));*/
         itemManager.addItem(Item.boxItem.createNew(300, 300));
 
+        uiManager = new UIManager(handler);
+
+        uiManager.addObject(new UIbotton("X", 1200, 140, 64, 64, new ClickListener() {
+            public void onClick() {
+                sum = "";
+                UIvisible = false;
+            }
+        }));
+        uiManager.addObject(new UIbotton("          Clear", 1010, 190, 200, 64, new ClickListener() {
+            public void onClick() {
+                sum = "";
+            }
+        }));
+        uiManager.addObject(new UIbotton("          Enter", 1010, 500, 200, 64, new ClickListener() {
+            public void onClick() {
+                if (word.equals(sum)) {
+                    System.out.println("win");
+                }
+            }
+        }));
+        uiManager.addObject(new UIbotton("Set", 1010, 600, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                word = sum;
+            }
+        }));
+
+        uiManager.addObject(new UIbotton(choice[0], 40, 280, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[0];
+            }
+        }));
+
+        uiManager.addObject(new UIbotton(choice[1], 200, 280, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[1];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[2], 360, 280, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[2];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[3], 520, 280, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[3];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[4], 680, 280, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[4];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[5], 840, 280, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[5];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[6], 1000, 280, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[6];
+            }
+        }));
+        //row 2;
+        
+        uiManager.addObject(new UIbotton(choice[7], 40, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[7];
+            }
+        }));
+
+        uiManager.addObject(new UIbotton(choice[8], 200, 360, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[8];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[9], 360, 360, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[9];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[10], 520, 360, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[10];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[11], 680, 360, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[11];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[12], 840, 360, 64, 64,  new ClickListener() {
+
+            public void onClick() {
+                sum += choice[12];
+            }
+        }));
+        uiManager.addObject(new UIbotton(choice[13], 1000, 360, 64, 64, new ClickListener() {
+
+            public void onClick() {
+                sum += choice[13];
+            }
+        }));
+        
         handler.addWorld(world);
         handler.addWorld(world1);
         handler.addWorld(world2);
         handler.addWorld(world3);
         handler.addWorld(world4);
-        
+
         m1 = new MouseManager(handler);
+        m1.setUIManager(uiManager);
         view.getF1().addKeyListener(k1);
         view.getF1().addMouseListener(m1);
         view.getF1().addMouseMotionListener(m1);
@@ -106,12 +258,15 @@ public class GameController implements Runnable {
     }
 
     private void tick() {
-
+        //gm comand
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E))
+            UIvisible =!UIvisible;
+        
         k1.tick();
         itemManager.tick();
-
+        uiManager.tick();
         entityManager.tick();
-
+        
     }
 
     private void render() {
@@ -131,9 +286,17 @@ public class GameController implements Runnable {
         world3.render(g);
         //world4.render(g);
         itemManager.render(g);
-
         entityManager.render(g);
-        Text.drawString(g, "น้องปืน", 640, 300, true, Color.pink, Assets.font28);
+        if (UIvisible) {
+            //g.drawImage(Assets.inventory, 20, 140, 1240, 500, null);
+            Text.drawString(g, sum, 500, 200, true, Color.black, Assets.font28);
+            Text.drawString(g, hint[0], 500, 480, true, Color.black, Assets.font28);
+            Text.drawString(g, hint[1], 500, 520, true, Color.black, Assets.font28);
+            Text.drawString(g, hint[2], 500, 560, true, Color.black, Assets.font28);
+            uiManager.render(g);
+        }
+
+        //Text.drawString(g, "น้องปืน", 640, 300, true, Color.pink, Assets.font28);
         //g.setColor(Color.red);
         //g.fillRect(10, 10, 50, 200);
         //System.out.println(entityManager.getPlayer().x - handler.getGameCamera().getxOffset() + "   " + (entityManager.getPlayer().y - handler.getGameCamera().getyOffset()));
@@ -142,7 +305,6 @@ public class GameController implements Runnable {
         ImageIcon i = new ImageIcon("test.jpg");
         img = i.getImage();
         g.drawImage(img, 200, 300, null);*/
-
         //168 x 24 : 7
         //end Drawing
         bs.show();
@@ -173,7 +335,7 @@ public class GameController implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                
+
                 ticks = 0;
                 timer = 0;
             }
@@ -259,4 +421,33 @@ public class GameController implements Runnable {
         this.entityManager = entityManager;
     }
 
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public String[] getChoice() {
+        return choice;
+    }
+
+    public void setChoice(String[] choice) {
+        this.choice = choice;
+    }
+
+    public String[] getHint() {
+        return hint;
+    }
+
+    public void setHint(String[] hint) {
+        this.hint = hint;
+    }
+    public void setHint(String h1,String h2,String h3){
+        hint[0] = h1;
+        hint[1] = h2;
+        hint[2] = h3;
+    }
+    
 }

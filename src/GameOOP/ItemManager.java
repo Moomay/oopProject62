@@ -26,8 +26,12 @@ public class ItemManager {
         while (it.hasNext()){
             Item i = it.next();
             i.tick();
-            if (i.isPickedUp())
+            if (i.isPickedUp()){
+               handler.setWord(i.getWord().getWordString());
+               handler.setHint(i.getWord().getHint1(), i.getWord().getHint2(), i.getWord().getHint3());
+               
                it.remove();
+            }
         }
         
     }

@@ -77,6 +77,11 @@ public class Handler {
     public EntityManager getEntityManager(){
         return game.getEntityManager();
     }
+    public void setWord(String word){
+        game.setWord(word);
+    }
+    public void setHint(String h1, String h2, String h3){
     
+    }
 
 }
