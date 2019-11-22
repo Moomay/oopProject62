@@ -16,10 +16,8 @@ public class Tile {
 
     //static stuff here
     public static Tile[] tiles = new Tile[500];
-    public static Tile grassTile = new GrassTile(0);
-    public static Tile dirtTile = new DirtTile(1);
-    public static Tile watterTile = new WatterTile(2);
-    //public static Tile tile27 = new Tile(Assets.tiles[0], 0);
+    
+
 
     public static Tile tile0 = new Tile(Assets.tiles[0], 0);
     public static Tile tile24 = new Tile(Assets.tiles[24], 24);

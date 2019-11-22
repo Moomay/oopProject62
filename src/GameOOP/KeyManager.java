@@ -45,10 +45,7 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
 
-        aUp = keys[KeyEvent.VK_UP];
-        aDown = keys[KeyEvent.VK_DOWN];
-        aLeft = keys[KeyEvent.VK_LEFT];
-        aRight = keys[KeyEvent.VK_RIGHT];
+        
     }
 
     public void keyTyped(KeyEvent ke) {

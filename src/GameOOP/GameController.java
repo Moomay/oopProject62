@@ -36,11 +36,8 @@ public class GameController implements Runnable {
     private int width = 1280;
     private int height = 720;
 
-    private BufferedImage testImage;
+
     private GameView view;
-    private ImageIcon i;
-    private Image img;
-    private SpriteSheet sheet;
     private Thread thread0;
     private boolean running = false;
     //stage
@@ -64,8 +61,7 @@ public class GameController implements Runnable {
     private EntityManager entityManager;
     private ItemManager itemManager;
 
-    private ArrayList<UIObject> objects;
-    private UIbotton reset;
+    
 
     private UIManager uiManager;
     private boolean UIvisible = false;

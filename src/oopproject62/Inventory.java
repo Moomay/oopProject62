@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GameOOP;
+package oopproject62;
 
+import GameOOP.Handler;
+import GameOOP.Item;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Graphics;
 import java.util.ArrayList;

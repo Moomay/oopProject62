@@ -60,14 +60,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mouseReleased(MouseEvent me) {
         if (me.getButton() == MouseEvent.BUTTON1) {
             leftPressed = false;
-            if (handler.getEntityManager().getPlayer().getInventory().isActive()) {
-
-                if (mouseX >= 20 && mouseX <= 620 && mouseY >= 400 && mouseY <= 640) {
-                    System.out.println("Here ON");
-                }
+           
                 System.out.println("RE L");
 
-            }
         } else if (me.getButton() == MouseEvent.BUTTON3) {
             System.out.println("RE R");
             rightPressed = false;
