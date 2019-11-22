@@ -8,10 +8,7 @@ package GameOOP;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- *
- * @author Jame
- */
+
 public class Rock extends StaticEntity {
 
     public Rock(Handler handler, float x, float y) {

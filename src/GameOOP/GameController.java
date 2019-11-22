@@ -59,7 +59,7 @@ public class GameController implements Runnable {
     private int score = 0;
     private String word = "EA";
     private String[] choice;
-    private String  c = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
     private String[] hint;
     private String h1,h2,h3;
     public GameController() {
@@ -144,6 +144,9 @@ public class GameController implements Runnable {
             public void onClick() {
                 if (word.equals(sum)) {
                     System.out.println("win");
+                }
+                else {
+                
                 }
                 System.out.println(word);
             }
