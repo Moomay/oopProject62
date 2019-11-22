@@ -8,10 +8,6 @@ package GameOOP;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-/**
- *
- * @author Jame
- */
 public abstract class Entity {
     public static final int DEFAULT_HEALTH = 10;
     protected Handler handler;

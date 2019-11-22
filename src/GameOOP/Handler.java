@@ -7,10 +7,7 @@ package GameOOP;
 
 import java.util.LinkedList;
 
-/**
- *
- * @author Jame
- */
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,10 +15,7 @@ import java.util.LinkedList;
  */
 
 
-/**
- *
- * @author Jame
- */
+
 public class Handler {
 
     private GameController game;

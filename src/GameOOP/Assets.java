@@ -5,15 +5,12 @@
  */
 package GameOOP;
 
+
 import java.awt.Font;
 import java.awt.image.BufferedImage;
-import oopproject62.ImageLoader;
-import oopproject62.SpriteSheet;
 
-/**
- *
- * @author Jame
- */
+
+
 public class Assets {
 
     public static final int tileW = 16, tileH = 16;

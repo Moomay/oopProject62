@@ -8,10 +8,6 @@ package GameOOP;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Jame
- */
 public class Tile {
 
     //static stuff here

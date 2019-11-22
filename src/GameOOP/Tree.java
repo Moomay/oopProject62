@@ -8,10 +8,7 @@ package GameOOP;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- *
- * @author Jame
- */
+
 public class Tree extends StaticEntity {
 
     public Tree(Handler handler, float x, float y) {

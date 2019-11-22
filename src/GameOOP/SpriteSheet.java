@@ -7,10 +7,6 @@ package GameOOP;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Jame
- */
 public class SpriteSheet {
     private BufferedImage sheet;
     public SpriteSheet(BufferedImage sheet){

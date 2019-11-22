@@ -10,10 +10,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-/**
- *
- * @author Jame
- */
+
 public class Text {
 
     public static void drawString(Graphics g, String text, int xPos, int yPos, boolean center, Color c, Font font) {

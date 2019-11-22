@@ -14,10 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Jame
- */
+
 public class GameView extends JPanel {
 
     private int width, height;

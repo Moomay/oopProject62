@@ -11,10 +11,7 @@ import java.io.File;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Jame
- */
+
 public class FontLoader {
     
     public static Font loadFont(String path, float size){

@@ -9,10 +9,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-/**
- *
- * @author Jame
- */
+
 public abstract class GameUI {
     protected float x, y;
     protected int width, height;
