@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package GameOOP;
-
+import java.util.Random;
 
 
 import com.sun.glass.events.KeyEvent;
@@ -16,16 +16,14 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
-
-
 
 public class GameController implements Runnable {
 
     //set up screen
     private int width = 1280;
     private int height = 720;
-
 
     private GameView view;
     private Thread thread0;
@@ -51,22 +49,24 @@ public class GameController implements Runnable {
     private EntityManager entityManager;
     private ItemManager itemManager;
 
-    
-
     private UIManager uiManager;
     private boolean UIvisible = false;
     private String sum = "";
     private int score = 0;
-    private String word = "EA";
+    private String word = "";
     private String[] choice;
-    
+    private String wordcheck = "";
     private String[] hint;
-    private String h1,h2,h3;
+    private String h1, h2, h3;
+    private int statworng = 0;
+    private Word[] listword;
+    private int timecount = 120*60;
     public GameController() {
 
     }
 
     void init() {
+        Random rand = new Random();
         view = new GameView(width, height);
         k1 = new KeyManager();
 
@@ -80,10 +80,23 @@ public class GameController implements Runnable {
         world3 = new World(handler, "world4.txt");
         world4 = new World(handler, "world5.txt");
         choice = new String[26];
+        listword = new Word[50];
+        //word add
+        listword[0] = new Word("GIRAFFE", "เป็นสัตว์กินพืชตัวสีเหลืองส้ม", "", "", 1);
+        listword[1] = new Word("HEART", "ไม่ได้รับการดูแลมาเป็นเวลานาน", "", "", 2);
+        listword[2] = new Word("NETWORK", "แขนงที่เป็นจุดแข็งของคณะ ITKMITL", "", "", 2);
+        listword[3] = new Word("LOVE", "มีให้เธอแค่ข้างเดียว", "", "", 2);
+        listword[4] = new Word("CONNECT", "ก่อนใช้งานinternetต้อง...", "", "", 2);
+        listword[5] = new Word("DESTROY", "สิ่งที่เธอกำลังทำกับฉัน", "", "", 2);
+        listword[6] = new Word("RELATIONSHIP", "ไม่ได้รับการดูแลมาเป็นเวลานาน", "", "", 2);
+        listword[7] = new Word("DOG", "จีบตั้งนาน ... คาบไปกิน", "", "", 2);
+        listword[8] = new Word("DESTROY", "...คนเก่ายังไม่ได้ ก็อย่าพึ่งมาคุยกับเรา", "", "", 2);
+        listword[9] = new Word("COUPLE", "ฉันต้อง...กับเธอ มีเพียงแต่เธอเท่านั้น", "", "", 2);
+        
         hint = new String[3];
-        hint[0] = "อะไรว่ะ";
-        hint[1] = "งงcode";
-        hint[2] = "ลาก่อน";
+        hint[0] = "";
+        hint[1] = "";
+        hint[2] = "";
         
         choice[0] = "A";
         choice[1] = "B";
@@ -114,24 +127,28 @@ public class GameController implements Runnable {
         h1 = hint[0];
         h2 = hint[1];
         h3 = hint[2];
-        
-      
+
         gameCamera = new GameCamera(handler, 0, 0);
 
-        entityManager = new EntityManager(handler, new Player(handler,350, 450));
+        entityManager = new EntityManager(handler, new Player(handler, 350, 400));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new House(handler, 200, 800));
-        /*entityManager.addEntity(new Tree(handler, 150, 500));
-        entityManager.addEntity(new Rock(handler, 100, 450));
-        entityManager.addEntity(new Rock(handler, 300, 230));
-        entityManager.addEntity(new Rock(handler, 450, 450));*/
-        itemManager.addItem(Item.boxItem.createNew(300, 300));
-
+        //itemManager.addItem(Item.boxItem.createNew(300, 300));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(100)+300, 300));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(100)+500, rand.nextInt(400)+1000));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(2000)+300, rand.nextInt(400)+1500));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(500)+200, rand.nextInt(900)+100));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(2000), rand.nextInt(2000)+500));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(2000), rand.nextInt(2000)+500));
+        itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(2000), rand.nextInt(2000)+500));
         uiManager = new UIManager(handler);
 
         uiManager.addObject(new UIbotton("X", 1200, 140, 64, 64, new ClickListener() {
             public void onClick() {
                 sum = "";
+                if (word.equals("")){
+                    wordcheck="";
+                }
                 UIvisible = false;
             }
         }));
@@ -142,30 +159,44 @@ public class GameController implements Runnable {
         }));
         uiManager.addObject(new UIbotton("          Enter", 1010, 500, 200, 64, new ClickListener() {
             public void onClick() {
-                if (word.equals(sum)) {
+                if (word.equals(sum) && !(word.equals(""))) {
+                    score += word.length();
                     System.out.println("win");
-                }
+                    sum = "";
+                    word = "";
+                    h1 = "";
+                    h2 = "";
+                    h3 = "";
+                    UIvisible = false;
+                } else if(statworng == 3){
+                    sum = word + "                Anwser";
+                    wordcheck = "";
+                    word = "";
+                    statworng = 0;
+                }else if (word.equals("")){
+                } 
                 else {
-                
+                    wordcheck = "Worng" + statworng;
+                    statworng += 1;
                 }
                 System.out.println(word);
             }
         }));
-        uiManager.addObject(new UIbotton("Set", 1010, 600, 64, 64, new ClickListener() {
+        /*uiManager.addObject(new UIbotton("Set", 1010, 600, 64, 64, new ClickListener() {
 
             public void onClick() {
                 word = sum;
             }
         }));
-
-        uiManager.addObject(new UIbotton(choice[0], 40, 280, 64, 64,  new ClickListener() {
+*/
+        uiManager.addObject(new UIbotton(choice[0], 40, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[0];
             }
         }));
 
-        uiManager.addObject(new UIbotton(choice[1], 120, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[1], 120, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[1];
@@ -189,7 +220,7 @@ public class GameController implements Runnable {
                 sum += choice[4];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[5], 440, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[5], 440, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[5];
@@ -202,7 +233,7 @@ public class GameController implements Runnable {
             }
         }));
         //row 2;
-        
+
         uiManager.addObject(new UIbotton(choice[7], 600, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
@@ -210,31 +241,31 @@ public class GameController implements Runnable {
             }
         }));
 
-        uiManager.addObject(new UIbotton(choice[8], 680, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[8], 680, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[8];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[9], 760, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[9], 760, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[9];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[10], 840, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[10], 840, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[10];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[11], 920, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[11], 920, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[11];
             }
         }));
-        uiManager.addObject(new UIbotton(choice[12], 1000, 280, 64, 64,  new ClickListener() {
+        uiManager.addObject(new UIbotton(choice[12], 1000, 280, 64, 64, new ClickListener() {
 
             public void onClick() {
                 sum += choice[12];
@@ -318,8 +349,7 @@ public class GameController implements Runnable {
                 sum += choice[25];
             }
         }));
-        
-        
+
         handler.addWorld(world);
         handler.addWorld(world1);
         handler.addWorld(world2);
@@ -339,14 +369,17 @@ public class GameController implements Runnable {
 
     private void tick() {
         //gm comand
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E))
-            UIvisible =!UIvisible;
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
+            UIvisible = !UIvisible;
+        }
+        timecount -= 1;
         
         k1.tick();
         itemManager.tick();
         uiManager.tick();
         entityManager.tick();
         
+
     }
 
     private void render() {
@@ -369,13 +402,21 @@ public class GameController implements Runnable {
         entityManager.render(g);
         if (UIvisible) {
             g.drawImage(Assets.inventory, 20, 140, 1240, 580, null);
+          
+            Text.drawString(g, "Character :"+ word.length(), 50, 220, false, Color.black, Assets.font28);
             Text.drawString(g, sum, 500, 220, true, Color.black, Assets.font28);
             Text.drawString(g, h1, 500, 580, true, Color.black, Assets.font28);
             Text.drawString(g, h2, 500, 620, true, Color.black, Assets.font28);
             Text.drawString(g, h3, 500, 660, true, Color.black, Assets.font28);
+            Text.drawString(g, wordcheck, 880, 220, false, Color.red, Assets.font28);
             uiManager.render(g);
         }
-
+        Text.drawString(g, "score : " + score, 1200, 40, true, Color.yellow, Assets.font28);
+        Text.drawString(g, timecount/60+"", 40, 40, true, Color.yellow, Assets.font28);
+        if (timecount <= 0){
+            g.fillRect(0, 0, width, height);
+            Text.drawString(g, "score : " + score, 550, 360, false, Color.red, Assets.font28);
+        }
         //Text.drawString(g, "น้องปืน", 640, 300, true, Color.pink, Assets.font28);
         //g.setColor(Color.red);
         //g.fillRect(10, 10, 50, 200);
@@ -466,6 +507,8 @@ public class GameController implements Runnable {
         // TODO code application logic here
         GameController game = new GameController();
         game.start();
+        
+        
 
     }
 
@@ -524,7 +567,8 @@ public class GameController implements Runnable {
     public void setHint(String[] hint) {
         this.hint = hint;
     }
-    public void setHint(String h1,String h2,String h3){
+
+    public void setHint(String h1, String h2, String h3) {
         this.h1 = h1;
         this.h2 = h2;
         this.h3 = h3;
@@ -533,5 +577,7 @@ public class GameController implements Runnable {
     public void setUIvisible(boolean UIvisible) {
         this.UIvisible = UIvisible;
     }
+
+    
     
 }
