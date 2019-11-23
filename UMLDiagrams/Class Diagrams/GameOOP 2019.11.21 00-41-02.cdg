@@ -641,7 +641,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SpriteSheet" package="GameOOP" visibility="public" xPosition="642.0" yPosition="15.0">
+    <Class name="SpriteSheet" package="GameOOP" visibility="public" xPosition="538.0" yPosition="8.0">
       <Fields>
         <Field name="sheet" type="BufferedImage" visibility="private"/>
       </Fields>
@@ -763,64 +763,64 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="GameOOP.Rock" target="GameOOP.StaticEntity"/>
-    <UseRelation source="GameOOP.Item" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.EntityManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameController" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameCamera" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="view" source="GameOOP.GameController" target="GameOOP.GameView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameView" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="items" source="GameOOP.ItemManager" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
-    <HasRelation name="animNRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.World" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="game" source="GameOOP.Handler" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="GameOOP.Player" target="GameOOP.Creature"/>
-    <HasRelation name="boxItem" source="GameOOP.Item" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameController" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Inventory" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sheet" source="GameOOP.GameController" target="GameOOP.SpriteSheet" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.MouseManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.ItemManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="GameOOP.GrassTile" target="GameOOP.Tile 24-443"/>
-    <HasRelation name="handler" source="GameOOP.Item" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="worlds" source="GameOOP.Handler" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;World&gt;"/>
-    <HasRelation name="animNDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="player" source="GameOOP.GameController" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="itemManager" source="GameOOP.GameController" target="GameOOP.ItemManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="GameOOP.DirtTile" target="GameOOP.Tile 24-443"/>
-    <UseRelation source="GameOOP.Item" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="player" source="GameOOP.EntityManager" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="m1" source="GameOOP.GameController" target="GameOOP.MouseManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animNLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="gameCamera" source="GameOOP.GameController" target="GameOOP.GameCamera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.Tree" target="GameOOP.StaticEntity"/>
+    <HasRelation name="player" source="GameOOP.EntityManager" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="entityManager" source="GameOOP.GameController" target="GameOOP.EntityManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animNRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Player" target="GameOOP.Inventory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gameCamera" source="GameOOP.GameController" target="GameOOP.GameCamera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.MouseManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tile24-443" source="GameOOP.Tile 24-443" target="GameOOP.Tile 24-443" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Player" target="GameOOP.Creature"/>
+    <HasRelation name="itemManager" source="GameOOP.GameController" target="GameOOP.ItemManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.GameView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Handler" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="world1-4" source="GameOOP.GameController" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="inventoryItems" source="GameOOP.Inventory" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
+    <HasRelation name="inventory" source="GameOOP.Player" target="GameOOP.Inventory" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player" source="GameOOP.GameController" target="GameOOP.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="view" source="GameOOP.GameController" target="GameOOP.GameView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animNTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.MouseManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="boxItem" source="GameOOP.Item" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.ItemManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Rock" target="GameOOP.StaticEntity"/>
+    <UseRelation source="GameOOP.Inventory" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.Inventory" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="game" source="GameOOP.Handler" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.WatterTile" target="GameOOP.Tile 24-443"/>
+    <HasRelation name="animNDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameView" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="animTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Item" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.World" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameController" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.EntityManager" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="renderSorter" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="game" source="GameOOP.Entity" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GameOOP.EntityManager" target="GameOOP.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.GrassTile" target="GameOOP.Tile 24-443"/>
+    <HasRelation name="worlds" source="GameOOP.Handler" target="GameOOP.World" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;World&gt;"/>
+    <UseRelation source="GameOOP.Item" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.GameCamera" target="GameOOP.Entity" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="entities" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Entity&gt;"/>
     <HasRelation name="handler" source="GameOOP.GameCamera" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="renderSorter" source="GameOOP.EntityManager" target="GameOOP.Entity" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.GameController" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Inventory" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="GameOOP.Creature" target="GameOOP.Entity"/>
-    <HasRelation name="inventoryItems" source="GameOOP.Inventory" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
-    <UseRelation source="GameOOP.Handler" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameController" target="GameOOP.GameCamera" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="GameOOP.WatterTile" target="GameOOP.Tile 24-443"/>
-    <HasRelation name="animTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animNTop" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tile24-443" source="GameOOP.Tile 24-443" target="GameOOP.Tile 24-443" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="handler" source="GameOOP.Entity" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.Player" target="GameOOP.Inventory" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.GameController" target="GameOOP.EntityManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GameOOP.Creature" target="GameOOP.Entity"/>
+    <IsRelation name="is" source="GameOOP.DirtTile" target="GameOOP.Tile 24-443"/>
+    <HasRelation name="handler" source="GameOOP.Item" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="m1" source="GameOOP.GameController" target="GameOOP.MouseManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GameOOP.Inventory" target="GameOOP.Item" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="GameOOP.StaticEntity" target="GameOOP.Entity"/>
-    <HasRelation name="game" source="GameOOP.Entity" target="GameOOP.GameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animDown" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GameOOP.ItemManager" target="GameOOP.Handler" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="inventory" source="GameOOP.Player" target="GameOOP.Inventory" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="animRight" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="entityManager" source="GameOOP.GameController" target="GameOOP.EntityManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="handler" source="GameOOP.Inventory" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="handler" source="GameOOP.GameController" target="GameOOP.Handler" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="GameOOP.ItemManager" target="GameOOP.Item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Item&gt;"/>
+    <HasRelation name="animNLeft" source="GameOOP.Player" target="GameOOP.Animation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sheet" source="GameOOP.GameController" target="GameOOP.SpriteSheet" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
