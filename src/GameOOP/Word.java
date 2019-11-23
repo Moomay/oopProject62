@@ -5,11 +5,16 @@
  */
 package GameOOP;
 
+
+import java.util.LinkedList;
+
 /**
  *
  * @author Jame
  */
 public class Word {
+    
+    
     public static Word w1 = new Word("ABC", "บินได้", "ทดสอบ", "ทดสอบ", 0);
     private String hint1;
     private String hint2;
@@ -23,7 +28,7 @@ public class Word {
         this.hint3 = hint3;
         this.id = id;
     }
-
+    
     public static Word getW1() {
         return w1;
     }
