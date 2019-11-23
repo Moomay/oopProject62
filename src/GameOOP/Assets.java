@@ -14,7 +14,7 @@ public class Assets {
 
     public static final int tileW = 16, tileH = 16;
     public static final int width = 24, height = 24;
-    public static BufferedImage dirt, grass, water, tree, rock, box,uiB,uiH;
+    public static BufferedImage dirt, grass, water, tree, rock, box,uiB,uiH,house;
    
 
     public static BufferedImage[] playerNew_idle;
@@ -84,5 +84,6 @@ public class Assets {
         }
         uiB = ImageLoader.loadImage("uiB.png");
         uiH = ImageLoader.loadImage("UiC1.png");
+        house = ImageLoader.loadImage("house.png");
     }
 }
