@@ -17,7 +17,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import oopproject62.UIObject;
+
 
 
 public class GameController implements Runnable {

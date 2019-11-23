@@ -33,10 +33,10 @@ public class House extends StaticEntity {
     public void render(Graphics g) {
         g.drawImage(Assets.house, (int) (x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()), 400, 400, null);
-        g.setColor(Color.red);
+        /*g.setColor(Color.red);
         g.drawRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
-                bounds.width, bounds.height);
+                bounds.width, bounds.height);*/
     }
 
 }
