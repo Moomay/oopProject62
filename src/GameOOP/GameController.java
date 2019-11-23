@@ -115,13 +115,13 @@ public class GameController implements Runnable {
         h2 = hint[1];
         h3 = hint[2];
         
-        //reset = new UIbotton()
+      
         gameCamera = new GameCamera(handler, 0, 0);
 
-        entityManager = new EntityManager(handler, new Player(handler, 500, 400));
+        entityManager = new EntityManager(handler, new Player(handler,350, 450));
         itemManager = new ItemManager(handler);
-        /*entityManager.addEntity(new Tree(handler, 256, 256));
-        entityManager.addEntity(new Tree(handler, 150, 500));
+        entityManager.addEntity(new House(handler, 200, 800));
+        /*entityManager.addEntity(new Tree(handler, 150, 500));
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Rock(handler, 300, 230));
         entityManager.addEntity(new Rock(handler, 450, 450));*/
