@@ -181,7 +181,7 @@ public class GameController implements Runnable {
                     statworng += 1;
                 }
                 if (statworng >= 1){
-                    wordcheck = "Worng" + statworng;  
+                    wordcheck = "Wrong" + statworng;  
                 } 
                 
                 System.out.println(word);
