@@ -32,9 +32,9 @@ public class Tree extends StaticEntity {
         g.drawImage(Assets.tree, (int) (x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()),120,140,null);
         g.setColor(Color.red);
-        g.drawRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
+        /*g.drawRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
-                bounds.width, bounds.height);
+                bounds.width, bounds.height);*/
     }
 
 }
