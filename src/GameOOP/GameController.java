@@ -409,11 +409,13 @@ public class GameController implements Runnable {
           
             Text.drawString(g, "Character :"+ word.length(), 50, 220, false, Color.black, Assets.font28);
             Text.drawString(g, sum, 500, 220, true, Color.black, Assets.font28);
-            Text.drawString(g, h1, 500, 580, true, Color.black, Assets.font28);
-            Text.drawString(g, h2, 500, 620, true, Color.black, Assets.font28);
-            Text.drawString(g, h3, 500, 660, true, Color.black, Assets.font28);
-            Text.drawString(g, wordcheck, 880, 220, false, Color.red, Assets.font28);
+            if(statworng >= 0){
+                 Text.drawString(g, h1, 500, 580, true, Color.black, Assets.font28);
+                 Text.drawString(g, h2, 500, 620, true, Color.black, Assets.font28);
+                 Text.drawString(g, h3, 500, 660, true, Color.black, Assets.font28);
+                 Text.drawString(g, wordcheck, 880, 220, false, Color.red, Assets.font28);
             uiManager.render(g);
+            }
         }
         Text.drawString(g, "score : " + score, 1200, 40, true, Color.yellow, Assets.font28);
         Text.drawString(g, timecount/60+"", 40, 40, true, Color.yellow, Assets.font28);

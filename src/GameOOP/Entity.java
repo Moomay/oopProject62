@@ -41,14 +41,6 @@ public abstract class Entity {
         return new Rectangle((int)(x + bounds.x + xOffset), 
                 (int)(y + bounds.y + yOffset),bounds.width, bounds.height);
     }
-    public void hurt(int amt){
-        health -= amt;
-        if (health <= 0){
-            active = false;
-            die();
-        }
-    }
-    
     public abstract void die();
     public float getX() {
         return x;
