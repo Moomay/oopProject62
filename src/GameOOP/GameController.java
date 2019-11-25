@@ -134,7 +134,7 @@ public class GameController implements Runnable {
         entityManager = new EntityManager(handler, new Player(handler, 350, 400));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new House(handler, 200, 800));
-        entityManager.addEntity(new Tree(handler, 200, 300));
+        entityManager.addEntity(new Tree(handler, 100, 150));
         entityManager.addEntity(new Tree(handler, 1000, 500));
         entityManager.addEntity(new Tree(handler, 1000, 1000));
         //itemManager.addItem(Item.boxItem.createNew(300, 300));
