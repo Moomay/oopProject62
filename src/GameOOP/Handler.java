@@ -80,5 +80,10 @@ public class Handler {
     public void setUIvisible(boolean l){
         game.setUIvisible(l);
     }
-
+    public void setStatworng(){
+        game.setStatworng(0);
+    }
+    public void wordset(){
+        game.setWordcheck("");
+    }
 }

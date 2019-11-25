@@ -134,7 +134,7 @@ public class GameController implements Runnable {
         entityManager = new EntityManager(handler, new Player(handler, 350, 400));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new House(handler, 200, 800));
-        entityManager.addEntity(new Tree(handler, 200, 300));
+        entityManager.addEntity(new Tree(handler, 100, 150));
         entityManager.addEntity(new Tree(handler, 1000, 500));
         entityManager.addEntity(new Tree(handler, 1000, 1000));
         //itemManager.addItem(Item.boxItem.createNew(300, 300));
@@ -177,12 +177,13 @@ public class GameController implements Runnable {
                     wordcheck = "";
                     word = "";
                     statworng = 0;
-                }else if (word.equals("")){
-                } 
-                else {
-                    wordcheck = "Worng" + statworng;
+                }else {
                     statworng += 1;
                 }
+                if (statworng >= 1){
+                    wordcheck = "Worng" + statworng;  
+                } 
+                
                 System.out.println(word);
             }
         }));
@@ -584,6 +585,18 @@ public class GameController implements Runnable {
 
     public void setUIvisible(boolean UIvisible) {
         this.UIvisible = UIvisible;
+    }
+
+    public int getStatworng() {
+        return statworng;
+    }
+
+    public void setStatworng(int statworng) {
+        this.statworng = statworng;
+    }
+
+    public void setWordcheck(String wordcheck) {
+        this.wordcheck = wordcheck;
     }
 
     
