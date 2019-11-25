@@ -31,10 +31,10 @@ public class Tree extends StaticEntity {
     public void render(Graphics g) {
         g.drawImage(Assets.tree, (int) (x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()), null);
-        g.setColor(Color.red);
+        /*g.setColor(Color.red);
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
                 (int) (y + bounds.y - handler.getGameCamera().getyOffset()),
-                bounds.width, bounds.height);
+                bounds.width, bounds.height);*/
     }
 
 }

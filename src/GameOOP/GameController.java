@@ -88,7 +88,7 @@ public class GameController implements Runnable {
         listword[3] = new Word("LOVE", "มีให้เธอแค่ข้างเดียว", "", "", 2);
         listword[4] = new Word("CONNECT", "ก่อนใช้งานinternetต้อง...", "", "", 2);
         listword[5] = new Word("DESTROY", "สิ่งที่เธอกำลังทำกับฉัน", "", "", 2);
-        listword[6] = new Word("RELATIONSHIP", "ไม่ได้รับการดูแลมาเป็นเวลานาน", "", "", 2);
+        listword[6] = new Word("RELATIONSHIP", "สิ่งที่เธอเคยมีให้ฉัน แต่ตอนนี้ไม่มีอีกแล้ว", "", "", 2);
         listword[7] = new Word("DOG", "จีบตั้งนาน ... คาบไปกิน", "", "", 2);
         listword[8] = new Word("DESTROY", "...คนเก่ายังไม่ได้ ก็อย่าพึ่งมาคุยกับเรา", "", "", 2);
         listword[9] = new Word("COUPLE", "ฉันต้อง...กับเธอ มีเพียงแต่เธอเท่านั้น", "", "", 2);
@@ -133,6 +133,9 @@ public class GameController implements Runnable {
         entityManager = new EntityManager(handler, new Player(handler, 350, 400));
         itemManager = new ItemManager(handler);
         entityManager.addEntity(new House(handler, 200, 800));
+        entityManager.addEntity(new Tree(handler, 200, 300));
+        entityManager.addEntity(new Tree(handler, 1000, 500));
+        entityManager.addEntity(new Tree(handler, 1000, 1000));
         //itemManager.addItem(Item.boxItem.createNew(300, 300));
         itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(100)+300, 300));
         itemManager.addItem(new Item(Assets.box, "box", listword[rand.nextInt(9)]).createNew(rand.nextInt(100)+500, rand.nextInt(400)+1000));
@@ -349,7 +352,7 @@ public class GameController implements Runnable {
                 sum += choice[25];
             }
         }));
-
+        
         handler.addWorld(world);
         handler.addWorld(world1);
         handler.addWorld(world2);
@@ -416,7 +419,9 @@ public class GameController implements Runnable {
         if (timecount <= 0){
             g.fillRect(0, 0, width, height);
             Text.drawString(g, "score : " + score, 550, 360, false, Color.red, Assets.font28);
+            
         }
+       
         //Text.drawString(g, "น้องปืน", 640, 300, true, Color.pink, Assets.font28);
         //g.setColor(Color.red);
         //g.fillRect(10, 10, 50, 200);

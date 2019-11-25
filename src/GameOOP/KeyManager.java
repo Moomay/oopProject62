@@ -34,9 +34,7 @@ public class KeyManager implements KeyListener {
                 justPressed[i] = true;
             }
         }
-        if (keyJustPressed(KeyEvent.VK_E)) {
-            System.out.println("e");
-        }
+        
         up = keys[KeyEvent.VK_W];
         down = keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_A];
