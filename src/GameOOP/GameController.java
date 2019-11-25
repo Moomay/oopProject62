@@ -177,12 +177,13 @@ public class GameController implements Runnable {
                     wordcheck = "";
                     word = "";
                     statworng = 0;
-                }else if (word.equals("")){
-                } 
-                else {
-                    wordcheck = "Worng" + statworng;
+                }else {
                     statworng += 1;
                 }
+                if (statworng >= 1){
+                    wordcheck = "Worng" + statworng;  
+                } 
+                
                 System.out.println(word);
             }
         }));
@@ -582,6 +583,18 @@ public class GameController implements Runnable {
 
     public void setUIvisible(boolean UIvisible) {
         this.UIvisible = UIvisible;
+    }
+
+    public int getStatworng() {
+        return statworng;
+    }
+
+    public void setStatworng(int statworng) {
+        this.statworng = statworng;
+    }
+
+    public void setWordcheck(String wordcheck) {
+        this.wordcheck = wordcheck;
     }
 
     
