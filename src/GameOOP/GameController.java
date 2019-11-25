@@ -91,7 +91,7 @@ public class GameController implements Runnable {
         listword[5] = new Word("DESTROY", "สิ่งที่เธอกำลังทำกับฉัน", "", "", 2);
         listword[6] = new Word("RELATIONSHIP", "สิ่งที่เธอเคยมีให้ฉัน แต่ตอนนี้ไม่มีอีกแล้ว", "", "", 2);
         listword[7] = new Word("DOG", "จีบตั้งนาน ... คาบไปกิน", "", "", 2);
-        listword[8] = new Word("DESTROY", "...คนเก่ายังไม่ได้ ก็อย่าพึ่งมาคุยกับเรา", "", "", 2);
+        listword[8] = new Word("FORGET", "...คนเก่ายังไม่ได้ ก็อย่าพึ่งมาคุยกับเรา", "", "", 2);
         listword[9] = new Word("COUPLE", "ฉันต้อง...กับเธอ มีเพียงแต่เธอเท่านั้น", "", "", 2);
         
         hint = new String[3];
