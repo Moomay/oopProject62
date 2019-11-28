@@ -421,8 +421,8 @@ public class GameController implements Runnable {
         Text.drawString(g, "score : " + score, 1200, 40, true, Color.yellow, Assets.font28);
         Text.drawString(g, timecount/60+"", 40, 40, true, Color.yellow, Assets.font28);
         if (timecount <= 0){
-            g.fillRect(0, 0, width, height);
-            Text.drawString(g, "score : " + score, 550, 360, false, Color.red, Assets.font28);
+            g.drawImage(Assets.rain,0, 0, null);
+            Text.drawString(g, "score : " + score, 550, 360, false, Color.white, Assets.font28);
             
         }
        

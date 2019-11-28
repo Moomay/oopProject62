@@ -14,7 +14,7 @@ public class Assets {
 
     public static final int tileW = 16, tileH = 16;
     public static final int width = 24, height = 24;
-    public static BufferedImage dirt, grass, water, tree, rock, box,uiB,uiH,house;
+    public static BufferedImage dirt, grass, water, tree, rock, box,uiB,uiH,house,rain;
    
 
     public static BufferedImage[] playerNew_idle;
@@ -77,6 +77,7 @@ public class Assets {
         rock = ImageLoader.loadImage("rock.png");
         box = ImageLoader.loadImage("box.png");
         inventory = ImageLoader.loadImage("ui.png");
+        rain = ImageLoader.loadImage("rain.gif");
         for (int y = 0; y < 21; y++) {
             for (int x = 0; x < 22; x++) {
                 tiles[22*y + x+1] = worldsheet.crop(tileW * x, tileH * y, tileW, tileH);

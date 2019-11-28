@@ -41,6 +41,7 @@ public class GameView extends JPanel {
         f1.setVisible(true);
         f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f1.setBackground(Color.black);
+        f1.setResizable(false);
         
         c1.setPreferredSize(new Dimension(width, height));
         c1.setMaximumSize(new Dimension(width, height));
